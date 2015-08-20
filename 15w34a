@@ -174,7 +174,7 @@ CLASS none/z net/minecraft/command/CommandEffect
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
-CLASS none/aa
+CLASS none/aa net/minecraft/command/server/CommandEmote
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
@@ -353,7 +353,7 @@ CLASS none/ba net/minecraft/command/server/CommandSaveOn
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
-CLASS none/bb net/minecraft/command/server/CommandEmote
+CLASS none/bb
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
@@ -492,11 +492,31 @@ CLASS none/bz net/minecraft/command/CommandException
 	METHOD a getErrorOjbects ()[Ljava/lang/Object;
 CLASS none/cc net/minecraft/command/SyntaxErrorException
 CLASS none/cf net/minecraft/command/WrongUsageException
-CLASS none/cj
-	CLASS none/cj$a
+CLASS none/cj net/minecraft/util/BlockPos
+	CLASS none/cj$a MutableBlockPos
+		FIELD c x I
+		FIELD d y I
+		FIELD e z I
+		METHOD <init> (III)V
+			ARG 0 x
+			ARG 1 y
+			ARG 2 z
 		METHOD n getX ()I
 		METHOD o getY ()I
 		METHOD p getZ ()I
+	FIELD a ORIGIN Lnone/cj;
+	METHOD <init> (DDD)V
+		ARG 0 x
+		ARG 1 y
+		ARG 2 z
+	METHOD <init> (III)V
+		ARG 0 x
+		ARG 1 y
+		ARG 2 z
+	METHOD a add (DDD)Lnone/cj;
+	METHOD a add (III)Lnone/cj;
+	METHOD a add (Lnone/df;)Lnone/cj;
+	METHOD b subtract (Lnone/df;)Lnone/cj;
 CLASS none/df net/minecraft/util/Vec3i
 	FIELD a x I
 	FIELD b NULL_VECTOR Lnone/df;
@@ -513,6 +533,154 @@ CLASS none/df net/minecraft/util/Vec3i
 	METHOD n getX ()I
 	METHOD o getY ()I
 	METHOD p getZ ()I
+CLASS none/dl net/minecraft/nbt/NBTTagByteArray
+	FIELD b data [B
+	METHOD <init> ([B)V
+		ARG 0 data
+	METHOD a getId ()B
+	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
+	METHOD a write (Ljava/io/DataOutput;)V
+	METHOD b copy ()Lnone/eb;
+CLASS none/dm net/minecraft/nbt/NBTTagByte
+	FIELD b data B
+	METHOD <init> (B)V
+		ARG 0 data
+	METHOD a getId ()B
+	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
+	METHOD a write (Ljava/io/DataOutput;)V
+	METHOD b copy ()Lnone/eb;
+	METHOD c getLong ()J
+	METHOD d getint ()I
+	METHOD e getShort ()S
+	METHOD f getByte ()B
+	METHOD g getdouble ()D
+	METHOD h getFloat ()F
+CLASS none/dn net/minecraft/nbt/NBTTagCompound
+	FIELD b data Ljava/util/Map;
+	METHOD a getId ()B
+	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
+	METHOD a write (Ljava/io/DataOutput;)V
+	METHOD a setInteger (Ljava/lang/String;I)V
+	METHOD a setString (Ljava/lang/String;Ljava/lang/String;)V
+	METHOD b copy ()Lnone/eb;
+	METHOD c_ hasNoTags ()Z
+CLASS none/dp net/minecraft/nbt/NBTTagDouble
+	FIELD b data D
+	METHOD <init> (D)V
+		ARG 0 data
+	METHOD a getId ()B
+	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
+	METHOD a write (Ljava/io/DataOutput;)V
+	METHOD b copy ()Lnone/eb;
+	METHOD c getLong ()J
+	METHOD d getint ()I
+	METHOD e getShort ()S
+	METHOD f getByte ()B
+	METHOD g getdouble ()D
+	METHOD h getFloat ()F
+CLASS none/dq net/minecraft/nbt/NBTTagEnd
+	METHOD a getId ()B
+	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
+	METHOD a write (Ljava/io/DataOutput;)V
+	METHOD b copy ()Lnone/eb;
+CLASS none/dr net/minecraft/nbt/NBTTagFloat
+	FIELD b data F
+	METHOD <init> (F)V
+		ARG 0 data
+	METHOD a getId ()B
+	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
+	METHOD a write (Ljava/io/DataOutput;)V
+	METHOD b copy ()Lnone/eb;
+	METHOD c getLong ()J
+	METHOD d getint ()I
+	METHOD e getShort ()S
+	METHOD f getByte ()B
+	METHOD g getdouble ()D
+	METHOD h getFloat ()F
+CLASS none/ds net/minecraft/nbt/NBTTagIntArray
+	FIELD b data [I
+	METHOD <init> ([I)V
+		ARG 0 data
+	METHOD a getId ()B
+	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
+	METHOD a write (Ljava/io/DataOutput;)V
+	METHOD b copy ()Lnone/eb;
+CLASS none/dt net/minecraft/nbt/NBTTagInt
+	FIELD b data I
+	METHOD <init> (I)V
+		ARG 0 data
+	METHOD a getId ()B
+	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
+	METHOD a write (Ljava/io/DataOutput;)V
+	METHOD b copy ()Lnone/eb;
+	METHOD c getLong ()J
+	METHOD d getint ()I
+	METHOD e getShort ()S
+	METHOD f getByte ()B
+	METHOD g getdouble ()D
+	METHOD h getFloat ()F
+CLASS none/du net/minecraft/nbt/NBTTagList
+	FIELD b logger Lorg/apache/logging/log4j/Logger;
+	METHOD a getId ()B
+	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
+	METHOD a write (Ljava/io/DataOutput;)V
+	METHOD b copy ()Lnone/eb;
+	METHOD c_ hasNoTags ()Z
+CLASS none/dv net/minecraft/nbt/NBTTagLong
+	FIELD b data J
+	METHOD <init> (J)V
+		ARG 0 data
+	METHOD a getId ()B
+	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
+	METHOD a write (Ljava/io/DataOutput;)V
+	METHOD b copy ()Lnone/eb;
+	METHOD c getLong ()J
+	METHOD d getint ()I
+	METHOD e getShort ()S
+	METHOD f getByte ()B
+	METHOD g getdouble ()D
+	METHOD h getFloat ()F
+CLASS none/dz net/minecraft/nbt/NBTTagShort
+	METHOD a getId ()B
+	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
+	METHOD a write (Ljava/io/DataOutput;)V
+	METHOD b copy ()Lnone/eb;
+	METHOD c getLong ()J
+	METHOD d getint ()I
+	METHOD e getShort ()S
+	METHOD f getByte ()B
+	METHOD g getdouble ()D
+	METHOD h getFloat ()F
+CLASS none/ea net/minecraft/nbt/NBTTagString
+	FIELD b data Ljava/lang/String;
+	METHOD <init> (Ljava/lang/String;)V
+		ARG 0 data
+	METHOD a getId ()B
+	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
+	METHOD a write (Ljava/io/DataOutput;)V
+	METHOD a_ getString ()Ljava/lang/String;
+	METHOD b copy ()Lnone/eb;
+	METHOD c_ hasNoTags ()Z
+CLASS none/eb net/minecraft/nbt/NBTBase
+	CLASS none/eb$a NBTPrimitive
+		METHOD c getLong ()J
+		METHOD d getint ()I
+		METHOD e getShort ()S
+		METHOD f getByte ()B
+		METHOD g getdouble ()D
+		METHOD h getFloat ()F
+	FIELD a NBT_TYPES [Ljava/lang/String;
+	METHOD a getId ()B
+	METHOD a createNewByType (B)Lnone/eb;
+		ARG 0 id
+	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
+		ARG 0 input
+		ARG 1 depth
+	METHOD a write (Ljava/io/DataOutput;)V
+		ARG 0 output
+	METHOD a_ getString ()Ljava/lang/String;
+	METHOD b copy ()Lnone/eb;
+	METHOD c_ hasNoTags ()Z
 CLASS none/es net/minecraft/util/ChatComponentStyle
 	FIELD a siblings Ljava/util/List;
 	FIELD b style Lnone/ez;
@@ -660,6 +828,10 @@ CLASS none/ez net/minecraft/util/ChatStyle
 	METHOD m createShallowCopy ()Lnone/ez;
 	METHOD n createDeepCopy ()Lnone/ez;
 	METHOD o getParentStyle ()Lnone/ez;
+CLASS none/fa net/minecraft/util/ChatComponentText
+	FIELD b text Ljava/lang/String;
+	METHOD <init> (Ljava/lang/String;)V
+		ARG 0 text
 CLASS none/fb net/minecraft/util/ChatComponentTranslation
 	FIELD b children Ljava/util/List;
 	FIELD c stringVariablePattern Ljava/util/regex/Pattern;
@@ -729,32 +901,126 @@ CLASS none/agi net/minecraft/world/GameRules
 	METHOD a addGameRule (Ljava/lang/String;Ljava/lang/String;Lnone/agi$b;)V
 	METHOD b getRules ()[Ljava/lang/String;
 	METHOD e hasRule (Ljava/lang/String;)Z
-CLASS none/agk
+CLASS none/agk net/minecraft/world/World
+	FIELD w saveHandler Lnone/axo;
+	FIELD x worldInfo Lnone/axn;
+	METHOD <init> (Lnone/axo;Lnone/axn;Lnone/aqw;Lnone/nz;Z)V
+		ARG 0 saveHandler
+		ARG 1 worldInfo
+	METHOD I getWorldType ()Lnone/agp;
 	METHOD S getGameRules ()Lnone/agi;
+	METHOD Y extendedLevelsInChunkCache ()Z
+	METHOD a getStrongPower (Lnone/cj;Lnone/cq;)I
+	METHOD b getBiomeGenForCoords (Lnone/cj;)Lnone/agx;
+	METHOD b getCombinedLight (Lnone/cj;I)I
+	METHOD d isAirBlock (Lnone/cj;)Z
+	METHOD p getBlockState (Lnone/cj;)Lnone/apj;
+	METHOD s getTileEntity (Lnone/cj;)Lnone/aoe;
 CLASS none/agl net/minecraft/world/MinecraftException
+CLASS none/ago net/minecraft/world/IBlockAccess
+	METHOD I getWorldType ()Lnone/agp;
+	METHOD Y extendedLevelsInChunkCache ()Z
+	METHOD a getStrongPower (Lnone/cj;Lnone/cq;)I
+		ARG 0 pos
+	METHOD b getBiomeGenForCoords (Lnone/cj;)Lnone/agx;
+		ARG 0 pos
+	METHOD b getCombinedLight (Lnone/cj;I)I
+		ARG 0 pos
+	METHOD d isAirBlock (Lnone/cj;)Z
+		ARG 0 pos
+	METHOD p getBlockState (Lnone/cj;)Lnone/apj;
+		ARG 0 pos
+	METHOD s getTileEntity (Lnone/cj;)Lnone/aoe;
+		ARG 0 pos
+CLASS none/agp net/minecraft/world/WorldType
+	FIELD a worldTypes [Lnone/agp;
+	FIELD b DEFAULT Lnone/agp;
+	FIELD c FLAT Lnone/agp;
+	FIELD d LARGE_BIOMES Lnone/agp;
+	FIELD e AMPLIFIED Lnone/agp;
+	FIELD f CUSTOMIZED Lnone/agp;
+	FIELD g DEBUG_WORLD Lnone/agp;
+	FIELD h DEFAULT_1_1 Lnone/agp;
+	FIELD i worldTypeId I
+	FIELD j worldType Ljava/lang/String;
+	FIELD k generatorVersion I
+	FIELD l canBeCreated Z
+	FIELD m isWorldTypeVersioned Z
+	FIELD n hasNotificationData Z
+	METHOD <init> (ILjava/lang/String;)V
+		ARG 0 id
+		ARG 1 name
+	METHOD <init> (ILjava/lang/String;I)V
+		ARG 0 id
+		ARG 1 name
+		ARG 2 version
+	METHOD a getWorldTypeName ()Ljava/lang/String;
+	METHOD a getWorldTypeForGeneratorVersion (I)Lnone/agp;
+		ARG 0 version
+	METHOD a parseWorldType (Ljava/lang/String;)Lnone/agp;
+		ARG 0 type
+	METHOD a setCanBeCreated (Z)Lnone/agp;
+		ARG 0 enable
+	METHOD b getTranslateName ()Ljava/lang/String;
+	METHOD d getGeneratorVersion ()I
+	METHOD e getCanBeCreated ()Z
+	METHOD f isVersioned ()Z
+	METHOD g getWorldTypeID ()I
+	METHOD h showWorldInfoNotice ()Z
+	METHOD i setVersioned ()Lnone/agp;
+	METHOD j setNotificationData ()Lnone/agp;
+CLASS none/agt
+	METHOD I getWorldType ()Lnone/agp;
+	METHOD Y extendedLevelsInChunkCache ()Z
+	METHOD a getStrongPower (Lnone/cj;Lnone/cq;)I
+	METHOD b getBiomeGenForCoords (Lnone/cj;)Lnone/agx;
+	METHOD b getCombinedLight (Lnone/cj;I)I
+	METHOD d isAirBlock (Lnone/cj;)Z
+	METHOD p getBlockState (Lnone/cj;)Lnone/apj;
+	METHOD s getTileEntity (Lnone/cj;)Lnone/aoe;
 CLASS none/akw net/minecraft/block/BlockJukebox
 	CLASS none/akw$a TileEntityJukebox
+		METHOD b writeToNBT (Lnone/dn;)V
+CLASS none/aoc net/minecraft/tileentity/TileEntityBanner
+	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aod net/minecraft/tileentity/TileEntityBeacon
+	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aoe net/minecraft/tileentity/TileEntity
 	FIELD a logger Lorg/apache/logging/log4j/Logger;
+	FIELD c pos Lnone/cj;
 	FIELD f nameToClassMap Ljava/util/Map;
 	FIELD g classToNameMap Ljava/util/Map;
 	FIELD h blockMetadata I
 	METHOD a addMapping (Ljava/lang/Class;Ljava/lang/String;)V
+	METHOD b writeToNBT (Lnone/dn;)V
+		ARG 0 compound
 CLASS none/aof net/minecraft/tileentity/TileEntityBrewingStand
+	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aog net/minecraft/tileentity/TileEntityChest
+	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aoh net/minecraft/tileentity/TileEntityCommandBlock
+	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aoi net/minecraft/tileentity/TileEntityComparator
+	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aoj net/minecraft/tileentity/TileEntityDaylightDetector
 CLASS none/aok net/minecraft/tileentity/TileEntityDispenser
+	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aol net/minecraft/tileentity/TileEntityDropper
 CLASS none/aom net/minecraft/tileentity/TileEntityEnchantmentTable
+	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aon net/minecraft/tileentity/TileEntityEnderChest
 CLASS none/aoo net/minecraft/tileentity/TileEntityFlowerPot
+	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aop net/minecraft/tileentity/TileEntityFurnace
+	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aor net/minecraft/tileentity/TileEntityHopper
+	METHOD b writeToNBT (Lnone/dn;)V
+CLASS none/aos
+	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aot net/minecraft/tileentity/TileEntityMobSpawner
+	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aou net/minecraft/tileentity/TileEntityNote
+	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aov net/minecraft/tileentity/TileEntitySign
 	CLASS none/aov$1
 		METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
@@ -764,15 +1030,154 @@ CLASS none/aov net/minecraft/tileentity/TileEntitySign
 		METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 		METHOD a addChatMessage (Lnone/eu;)V
 		METHOD e_ getCommandSenderName ()Ljava/lang/String;
+	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aow net/minecraft/tileentity/TileEntitySkull
+	METHOD b writeToNBT (Lnone/dn;)V
+CLASS none/aox
+	METHOD b writeToNBT (Lnone/dn;)V
+CLASS none/aoy
+	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aoz net/minecraft/tileentity/TileEntityEndPortal
 CLASS none/ape net/minecraft/tileentity/TileEntityPiston
+	METHOD b writeToNBT (Lnone/dn;)V
+CLASS none/axi
+	METHOD a flush ()V
+	METHOD a getChunkLoader (Lnone/aqw;)Lnone/aqn;
+	METHOD a saveWorldInfoWithPlayer (Lnone/axn;Lnone/dn;)V
+CLASS none/axk
+	METHOD w getGameRules ()Lnone/agi;
+CLASS none/axl
+	METHOD a flush ()V
+	METHOD a getMapFileFromName (Ljava/lang/String;)Ljava/io/File;
+	METHOD a getChunkLoader (Lnone/aqw;)Lnone/aqn;
+	METHOD a saveWorldInfo (Lnone/axn;)V
+	METHOD a saveWorldInfoWithPlayer (Lnone/axn;Lnone/dn;)V
+	METHOD b getWorldDirectory ()Ljava/io/File;
+	METHOD c checkSessionLock ()V
+	METHOD d loadWorldInfo ()Lnone/axn;
+	METHOD e getPlayerNBTManager ()Lnone/axw;
+	METHOD g getWorldDirectoryName ()Ljava/lang/String;
+CLASS none/axn net/minecraft/world/storage/WorldInfo
+	FIELD O theGameRules Lnone/agi;
+	FIELD f terrainType Lnone/agp;
+	METHOD w getGameRules ()Lnone/agi;
+CLASS none/axo net/minecraft/world/storage/ISaveHandler
+	METHOD a flush ()V
+	METHOD a getMapFileFromName (Ljava/lang/String;)Ljava/io/File;
+		ARG 0 name
+	METHOD a getChunkLoader (Lnone/aqw;)Lnone/aqn;
+	METHOD a saveWorldInfo (Lnone/axn;)V
+		ARG 0 info
+	METHOD a saveWorldInfoWithPlayer (Lnone/axn;Lnone/dn;)V
+		ARG 0 info
+	METHOD b getWorldDirectory ()Ljava/io/File;
+	METHOD c checkSessionLock ()V
+	METHOD d loadWorldInfo ()Lnone/axn;
+	METHOD e getPlayerNBTManager ()Lnone/axw;
+	METHOD g getWorldDirectoryName ()Ljava/lang/String;
+CLASS none/axv
+	METHOD a flush ()V
+	METHOD a getMapFileFromName (Ljava/lang/String;)Ljava/io/File;
+	METHOD a getChunkLoader (Lnone/aqw;)Lnone/aqn;
+	METHOD a saveWorldInfo (Lnone/axn;)V
+	METHOD a saveWorldInfoWithPlayer (Lnone/axn;Lnone/dn;)V
+	METHOD b getWorldDirectory ()Ljava/io/File;
+	METHOD c checkSessionLock ()V
+	METHOD d loadWorldInfo ()Lnone/axn;
+	METHOD e getPlayerNBTManager ()Lnone/axw;
+	METHOD g getWorldDirectoryName ()Ljava/lang/String;
+CLASS none/ayg net/minecraft/util/Vec3
+	FIELD a x D
+	FIELD b y D
+	FIELD c z D
+	METHOD <init> (DDD)V
+		ARG 0 x
+		ARG 1 y
+		ARG 2 z
+	METHOD a normalize ()Lnone/ayg;
+	METHOD a subtractReverse (Lnone/ayg;)Lnone/ayg;
+CLASS none/azc net/minecraft/client/Minecraft
+	FIELD K logger Lorg/apache/logging/log4j/Logger;
+	METHOD H stopIntegratedServer ()V
+	METHOD a run ()V
+CLASS none/azk net/minecraft/util/Session
+	CLASS none/azk$a Type
+		FIELD a LEGACY Lnone/azk$a;
+		FIELD b MOJANG Lnone/azk$a;
+		FIELD c nameToTypeMap Ljava/util/Map;
+		FIELD d name Ljava/lang/String;
+		METHOD a fromName (Ljava/lang/String;)Lnone/azk$a;
+			ARG 0 name
+	FIELD a username Ljava/lang/String;
+	FIELD b playerID Ljava/lang/String;
+	FIELD c token Ljava/lang/String;
+	FIELD d type Lnone/azk$a;
+	METHOD <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+		ARG 0 username
+		ARG 1 playerId
+		ARG 2 token
+		ARG 3 type
+	METHOD a getSessionID ()Ljava/lang/String;
+	METHOD b getPlayerID ()Ljava/lang/String;
+	METHOD c getUsername ()Ljava/lang/String;
+	METHOD d getToken ()Ljava/lang/String;
+	METHOD e getGameProfile ()Lcom/mojang/authlib/GameProfile;
+CLASS none/bep net/minecraft/client/main/GameConfiguration
+	CLASS none/bep$a DisplayInformation
+		FIELD a width I
+		FIELD b height I
+		FIELD c isFullscreen Z
+		FIELD d hasGLErrors Z
+		METHOD <init> (IIZZ)V
+			ARG 0 width
+			ARG 1 height
+			ARG 2 isFullscreen
+			ARG 3 hasGLErrors
+	CLASS none/bep$b FolderInformation
+		FIELD a baseDir Ljava/io/File;
+		FIELD b resourcepacksDir Ljava/io/File;
+		FIELD c assetsDir Ljava/io/File;
+		METHOD <init> (Ljava/io/File;Ljava/io/File;Ljava/io/File;Ljava/lang/String;)V
+			ARG 0 baseDir
+			ARG 1 resourcepacksDir
+			ARG 2 assetsDir
+	CLASS none/bep$c GameInformation
+		FIELD a isDemo Z
+		FIELD b version Ljava/lang/String;
+		METHOD <init> (ZLjava/lang/String;)V
+			ARG 0 isDemo
+			ARG 1 version
+	CLASS none/bep$d ServerInformation
+		FIELD a server Ljava/lang/String;
+		FIELD b port I
+		METHOD <init> (Ljava/lang/String;I)V
+			ARG 0 server
+			ARG 1 port
+	CLASS none/bep$e UserInformation
+		FIELD a session Lnone/azk;
+		METHOD <init> (Lnone/azk;Lcom/mojang/authlib/properties/PropertyMap;Lcom/mojang/authlib/properties/PropertyMap;Ljava/net/Proxy;)V
+			ARG 0 session
+	FIELD a userInfo Lnone/bep$e;
+	FIELD b displayinfo Lnone/bep$a;
+	FIELD c folderInfo Lnone/bep$b;
+	FIELD d gameInfo Lnone/bep$c;
+	FIELD e serverInfo Lnone/bep$d;
+	METHOD <init> (Lnone/bep$e;Lnone/bep$a;Lnone/bep$b;Lnone/bep$c;Lnone/bep$d;)V
+		ARG 0 userInfo
+		ARG 1 displayInfo
+		ARG 2 folderInfo
+		ARG 3 gameInfo
+		ARG 4 serverInfo
 CLASS none/bje
 	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 	METHOD a addChatMessage (Lnone/eu;)V
 CLASS none/bjf
 	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 	METHOD a addChatMessage (Lnone/eu;)V
+CLASS none/bjm
+	METHOD b getCombinedLight (Lnone/cj;I)I
+	METHOD p getBlockState (Lnone/cj;)Lnone/apj;
+	METHOD s getTileEntity (Lnone/cj;)Lnone/aoe;
 CLASS net/minecraft/server/MinecraftServer
 	FIELD k logger Lorg/apache/logging/log4j/Logger;
 	FIELD l mcServer Lnet/minecraft/server/MinecraftServer;
