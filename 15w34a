@@ -1,0 +1,598 @@
+CLASS none/a net/minecraft/util/EnumChatFormatting
+	FIELD a BLACK Lnone/a;
+	FIELD b DARK_BLUE Lnone/a;
+	FIELD c DARK_GREEN Lnone/a;
+	FIELD d DARK_AQUA Lnone/a;
+	FIELD e DARK_RED Lnone/a;
+	FIELD f DARK_PURPLE Lnone/a;
+	FIELD g GOLD Lnone/a;
+	FIELD h GRAY Lnone/a;
+	FIELD i DARK_GRAY Lnone/a;
+	FIELD j BLUE Lnone/a;
+	FIELD k GREEN Lnone/a;
+	FIELD l AQUA Lnone/a;
+	FIELD m RED Lnone/a;
+	FIELD n LIGHT_PURPLE Lnone/a;
+	FIELD o YELLOW Lnone/a;
+	FIELD p WHITE Lnone/a;
+	FIELD q OBFUSCATED Lnone/a;
+	FIELD r BOLD Lnone/a;
+	FIELD s STRIKETHROUGH Lnone/a;
+	FIELD t UNDERLINE Lnone/a;
+	FIELD u ITALIC Lnone/a;
+	FIELD v RESET Lnone/a;
+CLASS none/b net/minecraft/crash/CrashReport
+	FIELD a logger Lorg/apache/logging/log4j/Logger;
+	FIELD b description Ljava/lang/String;
+	FIELD c cause Ljava/lang/Throwable;
+	FIELD d theReportCategory Lnone/c;
+	FIELD f crashReportFile Ljava/io/File;
+	METHOD a getDescription ()Ljava/lang/String;
+	METHOD b getCrashCause ()Ljava/lang/Throwable;
+	METHOD g getCategory ()Lnone/c;
+	METHOD i getWittyComment ()Ljava/lang/String;
+CLASS none/c net/minecraft/crash/CrashReportCategory
+	CLASS none/c$a Entry
+	FIELD a theCrashReport Lnone/b;
+	FIELD d stackTrace [Ljava/lang/StackTraceElement;
+	METHOD <init> (Lnone/b;Ljava/lang/String;)V
+		ARG 0 theCrashReport
+CLASS none/e net/minecraft/util/ReportedException
+	FIELD a crashReport Lnone/b;
+	METHOD <init> (Lnone/b;)V
+		ARG 0 crashReport
+	METHOD a getCrashReport ()Lnone/b;
+CLASS none/f net/minecraft/util/ChatAllowedCharacters
+	FIELD b allowedCharacters [C
+	METHOD a isAllowedCharacter (C)Z
+	METHOD a filerAllowedCharacters (Ljava/lang/String;)Ljava/lang/String;
+CLASS none/g net/minecraft/util/Util
+	CLASS none/g$a EnumOS
+		FIELD a LINUX Lnone/g$a;
+		FIELD b SOLARIS Lnone/g$a;
+		FIELD c WINDOWS Lnone/g$a;
+		FIELD d OSX Lnone/g$a;
+		FIELD e UNKNOWN Lnone/g$a;
+	METHOD a getOSType ()Lnone/g$a;
+CLASS none/i
+	METHOD a canCommandSenderUseCommand (Lnone/m;)Z
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b getCommandAliases ()Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+CLASS none/k net/minecraft/command/ICommand
+	METHOD a canCommandSenderUseCommand (Lnone/m;)Z
+		ARG 0 sender
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+	METHOD b getCommandAliases ()Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
+CLASS none/m net/minecraft/command/ICommandSender
+	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
+	METHOD a addChatMessage (Lnone/eu;)V
+	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+CLASS none/n
+	CLASS none/n$1
+		METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
+		METHOD a addChatMessage (Lnone/eu;)V
+		METHOD e_ getCommandSenderName ()Ljava/lang/String;
+CLASS none/p
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/q
+	METHOD a canCommandSenderUseCommand (Lnone/m;)Z
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/r
+	METHOD a canCommandSenderUseCommand (Lnone/m;)Z
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/s
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/t
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/u
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/v
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/w
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/x
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/y
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/z
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/aa
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/ab
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/ac
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/ad
+	CLASS none/ad$1
+		METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
+		METHOD a addChatMessage (Lnone/eu;)V
+		METHOD e_ getCommandSenderName ()Ljava/lang/String;
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/ae
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/af
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/ag
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/ah
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/ai
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/aj
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/ak
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b getCommandAliases ()Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/al
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/am
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/an
+	METHOD a canCommandSenderUseCommand (Lnone/m;)Z
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/ao
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/ap
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b getCommandAliases ()Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/aq
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/ar
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/as
+	METHOD a canCommandSenderUseCommand (Lnone/m;)Z
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/at
+	METHOD a canCommandSenderUseCommand (Lnone/m;)Z
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/au
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/av
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/aw
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/ax
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/ay
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/az
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/ba
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bb
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bc
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/be
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bf
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bg
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bh
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bi
+	METHOD a canCommandSenderUseCommand (Lnone/m;)Z
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bj
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bk
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bl
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bm
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bn
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bp
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bq
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/br
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bs
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bt
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bu
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bv
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bw
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/bx
+	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD c getCommandName ()Ljava/lang/String;
+	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+CLASS none/es net/minecraft/util/ChatComponentStyle
+	FIELD a siblings Ljava/util/List;
+	FIELD b style Lnone/ez;
+	METHOD a getSiblings ()Ljava/util/List;
+	METHOD a createDeepCopyIterator (Ljava/lang/Iterable;)Ljava/util/Iterator;
+	METHOD a appendText (Ljava/lang/String;)Lnone/eu;
+	METHOD a appendSibling (Lnone/eu;)Lnone/eu;
+	METHOD a setChatStyle (Lnone/ez;)Lnone/eu;
+	METHOD b getChatStyle ()Lnone/ez;
+	METHOD c getUnformattedText ()Ljava/lang/String;
+	METHOD d getFormattedText ()Ljava/lang/String;
+CLASS none/et net/minecraft/event/ClickEvent
+	CLASS none/et$a Action
+		FIELD a OPEN_URL Lnone/et$a;
+		FIELD b OPEN_FILE Lnone/et$a;
+		FIELD c RUN_COMMAND Lnone/et$a;
+		FIELD d SUGGEST_COMMAND Lnone/et$a;
+		FIELD e CHANGE_PAGE Lnone/et$a;
+		FIELD f nameMapping Ljava/util/Map;
+		FIELD g allowedInChat Z
+		FIELD h canonicalName Ljava/lang/String;
+		METHOD <init> (Ljava/lang/String;ILjava/lang/String;Z)V
+			ARG 3 canonicalName
+		METHOD a isAllowedInChat ()Z
+		METHOD a getValueByCanonicalName (Ljava/lang/String;)Lnone/et$a;
+			ARG 0 canonicalName
+		METHOD b getCanonicalName ()Ljava/lang/String;
+	FIELD a action Lnone/et$a;
+	FIELD b value Ljava/lang/String;
+	METHOD <init> (Lnone/et$a;Ljava/lang/String;)V
+		ARG 0 action
+		ARG 1 value
+	METHOD a getAction ()Lnone/et$a;
+	METHOD b getValue ()Ljava/lang/String;
+CLASS none/eu net/minecraft/util/IChatComponent
+	CLASS none/eu$a Serializer
+		METHOD a deserialize (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lnone/eu;
+		METHOD a serialize (Lnone/eu;Ljava/lang/reflect/Type;Lcom/google/gson/JsonSerializationContext;)Lcom/google/gson/JsonElement;
+	METHOD a getSiblings ()Ljava/util/List;
+	METHOD a appendText (Ljava/lang/String;)Lnone/eu;
+	METHOD a appendSibling (Lnone/eu;)Lnone/eu;
+	METHOD a setChatStyle (Lnone/ez;)Lnone/eu;
+	METHOD b getChatStyle ()Lnone/ez;
+	METHOD c getUnformattedText ()Ljava/lang/String;
+	METHOD d getFormattedText ()Ljava/lang/String;
+CLASS none/ew net/minecraft/event/HoverEvent
+	CLASS none/ew$a Action
+		FIELD a SHOW_TEXT Lnone/ew$a;
+		FIELD b SHOW_ACHIEVEMENT Lnone/ew$a;
+		FIELD c SHOW_ITEM Lnone/ew$a;
+		FIELD d SHOW_ENTITY Lnone/ew$a;
+		FIELD e nameMapping Ljava/util/Map;
+		FIELD f allowedInChat Z
+		FIELD g canonicalName Ljava/lang/String;
+		METHOD <init> (Ljava/lang/String;ILjava/lang/String;Z)V
+			ARG 3 canonicalName
+		METHOD a isAllowedInChat ()Z
+		METHOD a getValueByCanonicalName (Ljava/lang/String;)Lnone/ew$a;
+			ARG 0 canonicalName
+		METHOD b getCanonicalName ()Ljava/lang/String;
+	FIELD a action Lnone/ew$a;
+	FIELD b value Lnone/eu;
+	METHOD <init> (Lnone/ew$a;Lnone/eu;)V
+		ARG 0 action
+		ARG 1 value
+	METHOD a getAction ()Lnone/ew$a;
+	METHOD b getValue ()Lnone/eu;
+CLASS none/ez net/minecraft/util/ChatStyle
+	CLASS none/ez$1
+		METHOD a getColor ()Lnone/a;
+		METHOD a setBold (Ljava/lang/Boolean;)Lnone/ez;
+			ARG 0 bold
+		METHOD a setColor (Lnone/a;)Lnone/ez;
+			ARG 0 color
+		METHOD a setClickEvent (Lnone/et;)Lnone/ez;
+			ARG 0 clickEvent
+		METHOD a setHoverEvent (Lnone/ew;)Lnone/ez;
+			ARG 0 hoverEvent
+		METHOD a setParentStyle (Lnone/ez;)Lnone/ez;
+			ARG 0 parentStyle
+		METHOD b isBold ()Z
+		METHOD b setItalic (Ljava/lang/Boolean;)Lnone/ez;
+			ARG 0 italic
+		METHOD c isItalic ()Z
+		METHOD c setStrikethrough (Ljava/lang/Boolean;)Lnone/ez;
+			ARG 0 strikethrough
+		METHOD d hasStrikethrough ()Z
+		METHOD d setUnderlined (Ljava/lang/Boolean;)Lnone/ez;
+			ARG 0 underlined
+		METHOD e isUnderlined ()Z
+		METHOD e setObfuscated (Ljava/lang/Boolean;)Lnone/ez;
+			ARG 0 obfuscated
+		METHOD f isObfuscated ()Z
+		METHOD h getClickEvent ()Lnone/et;
+		METHOD i getHoverEvent ()Lnone/ew;
+		METHOD j getInsertion ()Ljava/lang/String;
+		METHOD k getFormattingCode ()Ljava/lang/String;
+		METHOD m createShallowCopy ()Lnone/ez;
+		METHOD n createDeepCopy ()Lnone/ez;
+	CLASS none/ez$a Serializer
+		METHOD a deserialize (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lnone/ez;
+		METHOD a serialize (Lnone/ez;Ljava/lang/reflect/Type;Lcom/google/gson/JsonSerializationContext;)Lcom/google/gson/JsonElement;
+	FIELD a parentStyle Lnone/ez;
+	FIELD b color Lnone/a;
+	FIELD c bold Ljava/lang/Boolean;
+	FIELD d italic Ljava/lang/Boolean;
+	FIELD e underlined Ljava/lang/Boolean;
+	FIELD f strikethrough Ljava/lang/Boolean;
+	FIELD g obfuscated Ljava/lang/Boolean;
+	FIELD h clickEvent Lnone/et;
+	FIELD i hoverEvent Lnone/ew;
+	FIELD j insertion Ljava/lang/String;
+	FIELD k rootStyle Lnone/ez;
+	METHOD a getColor ()Lnone/a;
+	METHOD a setBold (Ljava/lang/Boolean;)Lnone/ez;
+		ARG 0 bold
+	METHOD a setInsertion (Ljava/lang/String;)Lnone/ez;
+		ARG 0 insertion
+	METHOD a setColor (Lnone/a;)Lnone/ez;
+		ARG 0 color
+	METHOD a setClickEvent (Lnone/et;)Lnone/ez;
+		ARG 0 clickEvent
+	METHOD a setHoverEvent (Lnone/ew;)Lnone/ez;
+		ARG 0 hoverEvent
+	METHOD a setParentStyle (Lnone/ez;)Lnone/ez;
+		ARG 0 parentStyle
+	METHOD b isBold ()Z
+	METHOD b setItalic (Ljava/lang/Boolean;)Lnone/ez;
+		ARG 0 italic
+	METHOD c isItalic ()Z
+	METHOD c setStrikethrough (Ljava/lang/Boolean;)Lnone/ez;
+		ARG 0 strikethrough
+	METHOD d hasStrikethrough ()Z
+	METHOD d setUnderlined (Ljava/lang/Boolean;)Lnone/ez;
+		ARG 0 underlined
+	METHOD e isUnderlined ()Z
+	METHOD e setObfuscated (Ljava/lang/Boolean;)Lnone/ez;
+		ARG 0 obfuscated
+	METHOD f isObfuscated ()Z
+	METHOD g isEmpty ()Z
+	METHOD h getClickEvent ()Lnone/et;
+	METHOD i getHoverEvent ()Lnone/ew;
+	METHOD j getInsertion ()Ljava/lang/String;
+	METHOD k getFormattingCode ()Ljava/lang/String;
+	METHOD m createShallowCopy ()Lnone/ez;
+	METHOD n createDeepCopy ()Lnone/ez;
+	METHOD o getParentStyle ()Lnone/ez;
+CLASS none/fb
+	METHOD a setChatStyle (Lnone/ez;)Lnone/eu;
+CLASS none/ll
+	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
+	METHOD a addChatMessage (Lnone/eu;)V
+CLASS none/mp
+	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
+	METHOD a addChatMessage (Lnone/eu;)V
+	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+CLASS none/qv
+	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
+	METHOD a addChatMessage (Lnone/eu;)V
+	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+CLASS none/vd
+	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+CLASS none/vg
+	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+CLASS none/xe
+	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+CLASS none/xf
+	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+CLASS none/xi
+	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+CLASS none/ys
+	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+CLASS none/aga
+	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
+	METHOD a addChatMessage (Lnone/eu;)V
+	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+CLASS none/aov
+	CLASS none/aov$1
+		METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
+		METHOD a addChatMessage (Lnone/eu;)V
+		METHOD e_ getCommandSenderName ()Ljava/lang/String;
+	CLASS none/aov$2
+		METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
+		METHOD a addChatMessage (Lnone/eu;)V
+		METHOD e_ getCommandSenderName ()Ljava/lang/String;
+CLASS none/bje
+	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
+	METHOD a addChatMessage (Lnone/eu;)V
+CLASS none/bjf
+	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
+	METHOD a addChatMessage (Lnone/eu;)V
+CLASS net/minecraft/server/MinecraftServer
+	FIELD k logger Lorg/apache/logging/log4j/Logger;
+	FIELD l mcServer Lnet/minecraft/server/MinecraftServer;
+	METHOD J getMinecraftVersion ()Ljava/lang/String;
+	METHOD P getServer ()Lnet/minecraft/server/MinecraftServer;
+	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
+	METHOD a addChatMessage (Lnone/eu;)V
+	METHOD e_ getCommandSenderName ()Ljava/lang/String;
