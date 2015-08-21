@@ -59,7 +59,7 @@ CLASS none/g net/minecraft/util/Util
 		FIELD e UNKNOWN Lnone/g$a;
 	METHOD a getOSType ()Lnone/g$a;
 CLASS none/h net/minecraft/command/IAdminCommand
-	METHOD a (Lnone/m;Lnone/k;ILjava/lang/String;[Ljava/lang/Object;)V
+	METHOD a notifyOperators (Lnone/m;Lnone/k;ILjava/lang/String;[Ljava/lang/Object;)V
 		ARG 0 sender
 		ARG 1 command
 CLASS none/i net/minecraft/command/CommandBase
@@ -89,6 +89,7 @@ CLASS none/j net/minecraft/command/CommandHandler
 	METHOD a registerCommand (Lnone/k;)Lnone/k;
 	METHOD a getPossibleCommands (Lnone/m;)Ljava/util/List;
 	METHOD a executeCommand (Lnone/m;Ljava/lang/String;)I
+		ARG 0 sender
 	METHOD a (Lnone/m;Ljava/lang/String;Lnone/cj;)Ljava/util/List;
 CLASS none/k net/minecraft/command/ICommand
 	METHOD a canCommandSenderUseCommand (Lnone/m;)Z
@@ -125,24 +126,41 @@ CLASS none/n
 CLASS none/p net/minecraft/command/server/CommandAchievement
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/q net/minecraft/command/server/CommandBanIp
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a canCommandSenderUseCommand (Lnone/m;)Z
+		ARG 0 sender
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/r net/minecraft/command/server/CommandBanPlayer
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a canCommandSenderUseCommand (Lnone/m;)Z
+		ARG 0 sender
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/s
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
@@ -159,12 +177,21 @@ CLASS none/t net/minecraft/command/CommandClearInventory
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
 		ARG 0 sender
+	METHOD d getAllUsernames ()[Ljava/lang/String;
 CLASS none/u net/minecraft/command/CommandClone
+	CLASS none/u$a StaticCloneData
+		FIELD a pos Lnone/cj;
+		FIELD c compound Lnone/dn;
+		METHOD <init> (Lnone/cj;Lnone/apj;Lnone/dn;)V
+			ARG 0 pos
+			ARG 2 compound
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
 		ARG 0 sender
 		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
 		ARG 0 sender
@@ -189,6 +216,8 @@ CLASS none/x net/minecraft/command/CommandDebug
 		ARG 0 sender
 		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
 		ARG 0 sender
@@ -224,10 +253,13 @@ CLASS none/aa net/minecraft/command/server/CommandEmote
 CLASS none/ab net/minecraft/command/CommandEnchant
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 	METHOD d getListOfPlayers ()[Ljava/lang/String;
 CLASS none/ac
 	METHOD a getRequiredPermissionLevel ()I
@@ -249,10 +281,15 @@ CLASS none/ad
 CLASS none/ae net/minecraft/command/CommandXP
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 	METHOD d getAllUsernames ()[Ljava/lang/String;
 CLASS none/af
 	METHOD a getRequiredPermissionLevel ()I
@@ -276,47 +313,82 @@ CLASS none/ag net/minecraft/command/CommandDifficulty
 CLASS none/ah net/minecraft/command/CommandGameMode
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
+	METHOD d getAllUsernames ()[Ljava/lang/String;
+	METHOD h getGameType (Lnone/m;Ljava/lang/String;)Lnone/agn$a;
+		ARG 0 sender
+		ARG 1 input
 CLASS none/ai net/minecraft/command/CommandGameRule
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 	METHOD d getGameRules ()Lnone/agi;
 CLASS none/aj net/minecraft/command/CommandGive
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 	METHOD d getPlayers ()[Ljava/lang/String;
 CLASS none/ak net/minecraft/command/CommandHelp
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD b getCommandAliases ()Ljava/util/List;
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 	METHOD d getCommands ()Ljava/util/Map;
 	METHOD d getSortedPossibleCommands (Lnone/m;)Ljava/util/List;
+		ARG 0 sender
 CLASS none/al net/minecraft/command/CommandServerKick
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/am net/minecraft/command/CommandKill
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/an net/minecraft/command/server/CommandListBans
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a canCommandSenderUseCommand (Lnone/m;)Z
@@ -367,31 +439,47 @@ CLASS none/at net/minecraft/command/server/CommandPardonPlayer
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
-CLASS none/au
+CLASS none/au net/minecraft/command/CommandParticle
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/av net/minecraft/command/CommandPlaySound
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/aw net/minecraft/command/server/CommandPublishLocalServer
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
-CLASS none/ax
+CLASS none/ax net/minecraft/command/common/CommandReplaceItem
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
+	METHOD d getAllUsernames ()[Ljava/lang/String;
 CLASS none/ay net/minecraft/command/server/CommandSaveAll
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
 	METHOD c getCommandName ()Ljava/lang/String;
@@ -404,12 +492,17 @@ CLASS none/ba net/minecraft/command/server/CommandSaveOn
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
-CLASS none/bb
+CLASS none/bb net/minecraft/command/server/CommandBroadcast
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/bc net/minecraft/command/server/CommandScoreboard
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
@@ -418,6 +511,9 @@ CLASS none/bc net/minecraft/command/server/CommandScoreboard
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
 CLASS none/bd net/minecraft/command/ServerCommandManager
+	METHOD a notifyOperators (Lnone/m;Lnone/k;ILjava/lang/String;[Ljava/lang/Object;)V
+		ARG 0 sender
+		ARG 1 command
 CLASS none/be net/minecraft/command/server/CommandSetBlock
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
@@ -433,35 +529,58 @@ CLASS none/bf net/minecraft/command/server/CommandSetDefaultSpawnpoint
 CLASS none/bg net/minecraft/command/CommandSetPlayerTimeout
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/bh net/minecraft/command/CommandSetSpawnpoint
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/bi net/minecraft/command/CommandShowSeed
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a canCommandSenderUseCommand (Lnone/m;)Z
+		ARG 0 sender
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/bj net/minecraft/command/CommandSpreadPlayers
 	CLASS none/bj$a Position
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
-CLASS none/bk
+		ARG 0 sender
+CLASS none/bk net/minecraft/command/CommandStats
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 args
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
+	METHOD d getAllUsernames ()[Ljava/lang/String;
 CLASS none/bl net/minecraft/command/server/CommandStop
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
 	METHOD c getCommandName ()Ljava/lang/String;
@@ -495,9 +614,14 @@ CLASS none/bq net/minecraft/command/server/CommandTestFor
 CLASS none/br net/minecraft/command/CommandTime
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/bs
 	FIELD a logger Lorg/apache/logging/log4j/Logger;
 	METHOD a getRequiredPermissionLevel ()I
@@ -509,8 +633,11 @@ CLASS none/bs
 CLASS none/bt net/minecraft/command/CommandToggleDownfall
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 	METHOD d toggleDownfall ()V
 CLASS none/bu
 	METHOD a getRequiredPermissionLevel ()I
@@ -521,9 +648,14 @@ CLASS none/bu
 CLASS none/bv net/minecraft/command/CommandWeather
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/bw net/minecraft/command/server/CommandWhitelist
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
@@ -593,6 +725,7 @@ CLASS none/dl net/minecraft/nbt/NBTTagByteArray
 	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
 		ARG 0 input
 		ARG 1 depth
+		ARG 2 tracker
 	METHOD a write (Ljava/io/DataOutput;)V
 		ARG 0 output
 	METHOD b copy ()Lnone/eb;
@@ -604,14 +737,15 @@ CLASS none/dm net/minecraft/nbt/NBTTagByte
 	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
 		ARG 0 input
 		ARG 1 depth
+		ARG 2 tracker
 	METHOD a write (Ljava/io/DataOutput;)V
 		ARG 0 output
 	METHOD b copy ()Lnone/eb;
 	METHOD c getLong ()J
-	METHOD d getint ()I
+	METHOD d getInt ()I
 	METHOD e getShort ()S
 	METHOD f getByte ()B
-	METHOD g getdouble ()D
+	METHOD g getDouble ()D
 	METHOD h getFloat ()F
 CLASS none/dn net/minecraft/nbt/NBTTagCompound
 	FIELD b tagMap Ljava/util/Map;
@@ -620,6 +754,7 @@ CLASS none/dn net/minecraft/nbt/NBTTagCompound
 	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
 		ARG 0 input
 		ARG 1 depth
+		ARG 2 tracker
 	METHOD a readType (Ljava/io/DataInput;Lnone/dw;)B
 	METHOD a write (Ljava/io/DataOutput;)V
 		ARG 0 output
@@ -647,20 +782,22 @@ CLASS none/dp net/minecraft/nbt/NBTTagDouble
 	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
 		ARG 0 input
 		ARG 1 depth
+		ARG 2 tracker
 	METHOD a write (Ljava/io/DataOutput;)V
 		ARG 0 output
 	METHOD b copy ()Lnone/eb;
 	METHOD c getLong ()J
-	METHOD d getint ()I
+	METHOD d getInt ()I
 	METHOD e getShort ()S
 	METHOD f getByte ()B
-	METHOD g getdouble ()D
+	METHOD g getDouble ()D
 	METHOD h getFloat ()F
 CLASS none/dq net/minecraft/nbt/NBTTagEnd
 	METHOD a getId ()B
 	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
 		ARG 0 input
 		ARG 1 depth
+		ARG 2 tracker
 	METHOD a write (Ljava/io/DataOutput;)V
 		ARG 0 output
 	METHOD b copy ()Lnone/eb;
@@ -672,14 +809,15 @@ CLASS none/dr net/minecraft/nbt/NBTTagFloat
 	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
 		ARG 0 input
 		ARG 1 depth
+		ARG 2 tracker
 	METHOD a write (Ljava/io/DataOutput;)V
 		ARG 0 output
 	METHOD b copy ()Lnone/eb;
 	METHOD c getLong ()J
-	METHOD d getint ()I
+	METHOD d getInt ()I
 	METHOD e getShort ()S
 	METHOD f getByte ()B
-	METHOD g getdouble ()D
+	METHOD g getDouble ()D
 	METHOD h getFloat ()F
 CLASS none/ds net/minecraft/nbt/NBTTagIntArray
 	FIELD b data [I
@@ -689,6 +827,7 @@ CLASS none/ds net/minecraft/nbt/NBTTagIntArray
 	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
 		ARG 0 input
 		ARG 1 depth
+		ARG 2 tracker
 	METHOD a write (Ljava/io/DataOutput;)V
 		ARG 0 output
 	METHOD b copy ()Lnone/eb;
@@ -700,14 +839,15 @@ CLASS none/dt net/minecraft/nbt/NBTTagInt
 	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
 		ARG 0 input
 		ARG 1 depth
+		ARG 2 tracker
 	METHOD a write (Ljava/io/DataOutput;)V
 		ARG 0 output
 	METHOD b copy ()Lnone/eb;
 	METHOD c getLong ()J
-	METHOD d getint ()I
+	METHOD d getInt ()I
 	METHOD e getShort ()S
 	METHOD f getByte ()B
-	METHOD g getdouble ()D
+	METHOD g getDouble ()D
 	METHOD h getFloat ()F
 CLASS none/du net/minecraft/nbt/NBTTagList
 	FIELD b logger Lorg/apache/logging/log4j/Logger;
@@ -715,6 +855,7 @@ CLASS none/du net/minecraft/nbt/NBTTagList
 	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
 		ARG 0 input
 		ARG 1 depth
+		ARG 2 tracker
 	METHOD a write (Ljava/io/DataOutput;)V
 		ARG 0 output
 	METHOD b copy ()Lnone/eb;
@@ -727,19 +868,27 @@ CLASS none/dv net/minecraft/nbt/NBTTagLong
 	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
 		ARG 0 input
 		ARG 1 depth
+		ARG 2 tracker
 	METHOD a write (Ljava/io/DataOutput;)V
 		ARG 0 output
 	METHOD b copy ()Lnone/eb;
 	METHOD c getLong ()J
-	METHOD d getint ()I
+	METHOD d getInt ()I
 	METHOD e getShort ()S
 	METHOD f getByte ()B
-	METHOD g getdouble ()D
+	METHOD g getDouble ()D
 	METHOD h getFloat ()F
-CLASS none/dw
+CLASS none/dw net/minecraft/nbt/NBTSizeTracker
 	CLASS none/dw$1
 		METHOD a read (J)V
+			ARG 0 bits
+	FIELD a INFINITE Lnone/dw;
+	FIELD b max J
+	FIELD c read J
+	METHOD <init> (J)V
+		ARG 0 max
 	METHOD a read (J)V
+		ARG 0 bits
 CLASS none/dz net/minecraft/nbt/NBTTagShort
 	FIELD b data S
 	METHOD <init> (S)V
@@ -748,14 +897,15 @@ CLASS none/dz net/minecraft/nbt/NBTTagShort
 	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
 		ARG 0 input
 		ARG 1 depth
+		ARG 2 tracker
 	METHOD a write (Ljava/io/DataOutput;)V
 		ARG 0 output
 	METHOD b copy ()Lnone/eb;
 	METHOD c getLong ()J
-	METHOD d getint ()I
+	METHOD d getInt ()I
 	METHOD e getShort ()S
 	METHOD f getByte ()B
-	METHOD g getdouble ()D
+	METHOD g getDouble ()D
 	METHOD h getFloat ()F
 CLASS none/ea net/minecraft/nbt/NBTTagString
 	FIELD b data Ljava/lang/String;
@@ -765,6 +915,7 @@ CLASS none/ea net/minecraft/nbt/NBTTagString
 	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
 		ARG 0 input
 		ARG 1 depth
+		ARG 2 tracker
 	METHOD a write (Ljava/io/DataOutput;)V
 		ARG 0 output
 	METHOD a_ getString ()Ljava/lang/String;
@@ -773,10 +924,10 @@ CLASS none/ea net/minecraft/nbt/NBTTagString
 CLASS none/eb net/minecraft/nbt/NBTBase
 	CLASS none/eb$a NBTPrimitive
 		METHOD c getLong ()J
-		METHOD d getint ()I
+		METHOD d getInt ()I
 		METHOD e getShort ()S
 		METHOD f getByte ()B
-		METHOD g getdouble ()D
+		METHOD g getDouble ()D
 		METHOD h getFloat ()F
 	FIELD a NBT_TYPES [Ljava/lang/String;
 	METHOD a getId ()B
@@ -785,6 +936,7 @@ CLASS none/eb net/minecraft/nbt/NBTBase
 	METHOD a read (Ljava/io/DataInput;ILnone/dw;)V
 		ARG 0 input
 		ARG 1 depth
+		ARG 2 tracker
 	METHOD a write (Ljava/io/DataOutput;)V
 		ARG 0 output
 	METHOD a_ getString ()Ljava/lang/String;
@@ -968,6 +1120,10 @@ CLASS none/ly net/minecraft/server/management/BanEntry
 	FIELD d endDate Ljava/util/Date;
 	FIELD e reason Ljava/lang/String;
 	METHOD <init> (Ljava/lang/Object;Ljava/util/Date;Ljava/lang/String;Ljava/util/Date;Ljava/lang/String;)V
+		ARG 0 value
+		ARG 1 startDate
+		ARG 2 bannedBy
+		ARG 3 endDate
 		ARG 4 reason
 	METHOD a onSerialization (Lcom/google/gson/JsonObject;)V
 		ARG 0 data
@@ -1531,11 +1687,15 @@ CLASS none/buo net/minecraft/server/integrated/IntegratedServer
 	METHOD a setGameType (Lnone/agn$a;)V
 		ARG 0 gameMode
 	METHOD a setDifficultyForAllWorlds (Lnone/pq;)V
+	METHOD ag isDedicatedServer ()Z
 	METHOD an isCommandBlockEnabled ()Z
 	METHOD h createNewCommandManager ()Lnone/bd;
 	METHOD o isHardcoreEnabled ()Z
 	METHOD p getOpPermissionLevel ()I
 CLASS none/bup net/minecraft/server/integrated/IntegratedServerCommandManager
+CLASS net/minecraft/client/main/Main
+	METHOD main ([Ljava/lang/String;)V
+		ARG 0 args
 CLASS net/minecraft/server/MinecraftServer
 	FIELD k logger Lorg/apache/logging/log4j/Logger;
 	FIELD l mcServer Lnet/minecraft/server/MinecraftServer;
@@ -1553,6 +1713,7 @@ CLASS net/minecraft/server/MinecraftServer
 	METHOD a addChatMessage (Lnone/eu;)V
 	METHOD a setDifficultyForAllWorlds (Lnone/pq;)V
 	METHOD aB getCurrentTimeMillis ()J
+	METHOD ag isDedicatedServer ()Z
 	METHOD an isCommandBlockEnabled ()Z
 	METHOD ar getConfigurationManager ()Lnone/md;
 	METHOD av getTickCounter ()I
