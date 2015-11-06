@@ -1531,7 +1531,7 @@ CLASS none/agt
 	METHOD d isAirBlock (Lnone/cj;)Z
 	METHOD p getBlockState (Lnone/cj;)Lnone/apj;
 	METHOD s getTileEntity (Lnone/cj;)Lnone/aoe;
-CLASS none/ahx
+CLASS none/ahx net/minecraft/block/BlockAir
 	METHOD b getRenderType ()I
 CLASS none/ahz
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
@@ -1546,15 +1546,19 @@ CLASS none/aib net/minecraft/block/BlockContainer
 CLASS none/aie
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
 	METHOD b getRenderType ()I
+CLASS none/aif net/minecraft/block/BlockBed
 CLASS none/aih net/minecraft/block/Block
 	CLASS none/aih$1
 		METHOD a getBreakSound ()Ljava/lang/String;
+		METHOD b getPlaceSound ()Ljava/lang/String;
 	CLASS none/aih$2
 		METHOD a getBreakSound ()Ljava/lang/String;
 	CLASS none/aih$3
 		METHOD a getBreakSound ()Ljava/lang/String;
+		METHOD b getPlaceSound ()Ljava/lang/String;
 	CLASS none/aih$4
 		METHOD a getBreakSound ()Ljava/lang/String;
+		METHOD b getPlaceSound ()Ljava/lang/String;
 		METHOD c getStepSound ()Ljava/lang/String;
 	CLASS none/aih$d SoundType
 		FIELD a soundName Ljava/lang/String;
@@ -1565,9 +1569,11 @@ CLASS none/aih net/minecraft/block/Block
 			ARG 1 volume
 			ARG 2 frequency
 		METHOD a getBreakSound ()Ljava/lang/String;
+		METHOD b getPlaceSound ()Ljava/lang/String;
 		METHOD c getStepSound ()Ljava/lang/String;
 		METHOD d getVolume ()F
 		METHOD e getFrequency ()F
+	FIELD O unlocalizedName Ljava/lang/String;
 	FIELD e soundTypeStone Lnone/aih$d;
 	FIELD f soundTypeWood Lnone/aih$d;
 	FIELD g soundTypeGravel Lnone/aih$d;
@@ -1581,13 +1587,17 @@ CLASS none/aih net/minecraft/block/Block
 	FIELD o soundTypeLadder Lnone/aih$d;
 	FIELD p soundTypeAnvil Lnone/aih$d;
 	FIELD q soundTypeSlime Lnone/aih$d;
+	METHOD U registerBlocks ()V
+	METHOD a getUnlocalizedName ()Ljava/lang/String;
 	METHOD a registerBlock (ILjava/lang/String;Lnone/aih;)V
-	METHOD a (ILnone/kd;Lnone/aih;)V
+	METHOD a registerBlock (ILnone/kd;Lnone/aih;)V
 	METHOD b getRenderType ()I
 	METHOD c setUnlocalizedName (Ljava/lang/String;)Lnone/aih;
-CLASS none/ail
+		ARG 0 name
+CLASS none/ail net/minecraft/block/BlockBrewingStand
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
 	METHOD b getRenderType ()I
+CLASS none/air net/minecraft/block/BlockCauldron
 CLASS none/ais
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
 	METHOD b getRenderType ()I
@@ -1599,6 +1609,7 @@ CLASS none/aiz
 CLASS none/ajc
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
 	METHOD b getRenderType ()I
+CLASS none/ajh net/minecraft/block/BlockDirt
 CLASS none/aji
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
 	METHOD b getRenderType ()I
@@ -1609,8 +1620,9 @@ CLASS none/ajo
 	METHOD b getRenderType ()I
 CLASS none/ajp
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
-CLASS none/ajq
+CLASS none/ajq net/minecraft/block/BlockEndPortal
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+CLASS none/ajr net/minecraft/block/BlockEndPortalFrame
 CLASS none/ajt
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
 	METHOD b getRenderType ()I
@@ -1624,6 +1636,8 @@ CLASS none/akb
 CLASS none/akf
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
 	METHOD b getRenderType ()I
+CLASS none/aki net/minecraft/block/BlockGrass
+CLASS none/akk net/minecraft/block/BlockGravel
 CLASS none/aks
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
 	METHOD b getRenderType ()I
@@ -1633,6 +1647,7 @@ CLASS none/akw net/minecraft/block/BlockJukebox
 		METHOD b writeToNBT (Lnone/dn;)V
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
 	METHOD b getRenderType ()I
+CLASS none/akx net/minecraft/block/BlockLadder
 CLASS none/alb
 	METHOD b getRenderType ()I
 CLASS none/ale
@@ -1641,10 +1656,13 @@ CLASS none/ale
 CLASS none/alo
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
 	METHOD b getRenderType ()I
+CLASS none/amo net/minecraft/block/BlockSand
+CLASS none/amq net/minecraft/block/BlockSapling
 CLASS none/ams
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
 CLASS none/amt
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+CLASS none/anf net/minecraft/block/BlockStone
 CLASS none/anj
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
 	METHOD b getRenderType ()I
