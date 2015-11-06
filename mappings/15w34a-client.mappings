@@ -77,7 +77,10 @@ CLASS none/i net/minecraft/command/CommandBase
 	FIELD a adminCommand Lnone/h;
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a parseInt (Ljava/lang/String;II)I
+	METHOD a (Lnone/k;)I
+		ARG 0 command
 	METHOD a canCommandSenderUseCommand (Lnone/m;)Z
+		ARG 0 sender
 	METHOD a notifyOperators (Lnone/m;Lnone/k;Ljava/lang/String;[Ljava/lang/Object;)V
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
 	METHOD a getListOfStringsMatchingLastWord ([Ljava/lang/String;[Ljava/lang/String;)Ljava/util/List;
@@ -90,7 +93,7 @@ CLASS none/j net/minecraft/command/CommandHandler
 	METHOD a getPossibleCommands (Lnone/m;)Ljava/util/List;
 	METHOD a executeCommand (Lnone/m;Ljava/lang/String;)I
 		ARG 0 sender
-	METHOD a (Lnone/m;Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD a getTabCompletionOptions (Lnone/m;Ljava/lang/String;Lnone/cj;)Ljava/util/List;
 CLASS none/k net/minecraft/command/ICommand
 	METHOD a canCommandSenderUseCommand (Lnone/m;)Z
 		ARG 0 sender
@@ -112,17 +115,33 @@ CLASS none/l net/minecraft/command/ICommandManager
 	METHOD a executeCommand (Lnone/m;Ljava/lang/String;)I
 		ARG 0 sender
 		ARG 1 command
-	METHOD a (Lnone/m;Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+	METHOD a getTabCompletionOptions (Lnone/m;Ljava/lang/String;Lnone/cj;)Ljava/util/List;
 		ARG 0 sender
+		ARG 2 pos
 CLASS none/m net/minecraft/command/ICommandSender
 	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
+		ARG 0 permissionLevel
+		ARG 1 command
 	METHOD a addChatMessage (Lnone/eu;)V
-	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+		ARG 0 message
+	METHOD c getPosition ()Lnone/cj;
+	METHOD d getPositionVector ()Lnone/ayg;
+	METHOD e getWorld ()Lnone/agk;
+	METHOD e_ getName ()Ljava/lang/String;
+	METHOD f getCommandSenderEntity ()Lnone/qv;
+	METHOD f_ getDisplayName ()Lnone/eu;
+	METHOD s_ sendCommandFeedback ()Z
 CLASS none/n
 	CLASS none/n$1
 		METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 		METHOD a addChatMessage (Lnone/eu;)V
-		METHOD e_ getCommandSenderName ()Ljava/lang/String;
+		METHOD c getPosition ()Lnone/cj;
+		METHOD d getPositionVector ()Lnone/ayg;
+		METHOD e getWorld ()Lnone/agk;
+		METHOD e_ getName ()Ljava/lang/String;
+		METHOD f getCommandSenderEntity ()Lnone/qv;
+		METHOD f_ getDisplayName ()Lnone/eu;
+		METHOD s_ sendCommandFeedback ()Z
 CLASS none/p net/minecraft/command/server/CommandAchievement
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
@@ -204,9 +223,14 @@ CLASS none/v
 CLASS none/w net/minecraft/command/server/CommandDeOp
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/x net/minecraft/command/CommandDebug
 	FIELD a logger Lorg/apache/logging/log4j/Logger;
 	FIELD b currentTime J
@@ -247,9 +271,14 @@ CLASS none/z net/minecraft/command/CommandEffect
 CLASS none/aa net/minecraft/command/server/CommandEmote
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/ab net/minecraft/command/CommandEnchant
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
@@ -271,7 +300,13 @@ CLASS none/ad
 	CLASS none/ad$1
 		METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 		METHOD a addChatMessage (Lnone/eu;)V
-		METHOD e_ getCommandSenderName ()Ljava/lang/String;
+		METHOD c getPosition ()Lnone/cj;
+		METHOD d getPositionVector ()Lnone/ayg;
+		METHOD e getWorld ()Lnone/agk;
+		METHOD e_ getName ()Ljava/lang/String;
+		METHOD f getCommandSenderEntity ()Lnone/qv;
+		METHOD f_ getDisplayName ()Lnone/eu;
+		METHOD s_ sendCommandFeedback ()Z
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
@@ -392,36 +427,58 @@ CLASS none/am net/minecraft/command/CommandKill
 CLASS none/an net/minecraft/command/server/CommandListBans
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a canCommandSenderUseCommand (Lnone/m;)Z
+		ARG 0 sender
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/ao net/minecraft/command/server/CommandListPlayers
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/ap net/minecraft/command/server/CommandMessage
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD b getCommandAliases ()Ljava/util/List;
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/aq net/minecraft/command/server/CommandMessageRaw
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 1 args
+		ARG 2 pos
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/ar net/minecraft/command/server/CommandOp
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
 		ARG 0 sender
 		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
 		ARG 0 sender
@@ -685,6 +742,12 @@ CLASS none/cj net/minecraft/util/BlockPos
 			ARG 0 x
 			ARG 1 y
 			ARG 2 z
+		METHOD <init> (Lnone/cj;)V
+			ARG 0 pos
+		METHOD c set (III)Lnone/cj$a;
+			ARG 0 x
+			ARG 1 y
+			ARG 2 z
 		METHOD n getX ()I
 		METHOD o getY ()I
 		METHOD p getZ ()I
@@ -697,10 +760,24 @@ CLASS none/cj net/minecraft/util/BlockPos
 		ARG 0 x
 		ARG 1 y
 		ARG 2 z
+	METHOD <init> (Lnone/ayg;)V
+		ARG 0 vec3
+	METHOD <init> (Lnone/df;)V
+		ARG 0 vec3i
+	METHOD <init> (Lnone/qv;)V
+		ARG 0 entity
 	METHOD a add (DDD)Lnone/cj;
+		ARG 0 x
+		ARG 1 y
+		ARG 2 z
 	METHOD a add (III)Lnone/cj;
+		ARG 0 x
+		ARG 1 y
+		ARG 2 z
 	METHOD a add (Lnone/df;)Lnone/cj;
+		ARG 0 vec3i
 	METHOD b subtract (Lnone/df;)Lnone/cj;
+		ARG 0 vec3i
 CLASS none/df net/minecraft/util/Vec3i
 	FIELD a x I
 	FIELD b NULL_VECTOR Lnone/df;
@@ -1113,6 +1190,7 @@ CLASS none/ll
 	FIELD bP logger Lorg/apache/logging/log4j/Logger;
 	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 	METHOD a addChatMessage (Lnone/eu;)V
+	METHOD c getPosition ()Lnone/cj;
 CLASS none/ly net/minecraft/server/management/BanEntry
 	FIELD a dateFormat Ljava/text/SimpleDateFormat;
 	FIELD b startDate Ljava/util/Date;
@@ -1180,7 +1258,13 @@ CLASS none/ml
 CLASS none/mp
 	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 	METHOD a addChatMessage (Lnone/eu;)V
-	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+	METHOD c getPosition ()Lnone/cj;
+	METHOD d getPositionVector ()Lnone/ayg;
+	METHOD e getWorld ()Lnone/agk;
+	METHOD e_ getName ()Ljava/lang/String;
+	METHOD f getCommandSenderEntity ()Lnone/qv;
+	METHOD f_ getDisplayName ()Lnone/eu;
+	METHOD s_ sendCommandFeedback ()Z
 CLASS none/ny net/minecraft/util/MathHelper
 	METHOD a sqrt (D)F
 	METHOD a absMax (DD)D
@@ -1233,6 +1317,12 @@ CLASS none/qb net/minecraft/profiler/PlayerUsageSnooper
 	METHOD d isSnooperRunning ()Z
 	METHOD e stopSnooper ()V
 	METHOD g getMinecraftStartTimeMilis ()J
+CLASS none/qc net/minecraft/profiler/IPlayerUsage
+	METHOD a addServerStatsToSnooper (Lnone/qb;)V
+		ARG 0 snooper
+	METHOD af isSnooperEnabled ()Z
+	METHOD b addServerTypeToSnooper (Lnone/qb;)V
+		ARG 0 snooper
 CLASS none/qv net/minecraft/entity/Entity
 	FIELD f boundingBox Lnone/aye;
 	FIELD o world Lnone/agk;
@@ -1240,19 +1330,34 @@ CLASS none/qv net/minecraft/entity/Entity
 		ARG 0 world
 	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 	METHOD a addChatMessage (Lnone/eu;)V
-	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+	METHOD c getPosition ()Lnone/cj;
+	METHOD d getPositionVector ()Lnone/ayg;
+	METHOD e getWorld ()Lnone/agk;
+	METHOD e_ getName ()Ljava/lang/String;
+	METHOD f getCommandSenderEntity ()Lnone/qv;
+	METHOD f_ getDisplayName ()Lnone/eu;
+	METHOD s_ sendCommandFeedback ()Z
 CLASS none/vd
-	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+	METHOD e_ getName ()Ljava/lang/String;
 CLASS none/vg
-	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+	METHOD e_ getName ()Ljava/lang/String;
 CLASS none/xe
-	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+	METHOD e_ getName ()Ljava/lang/String;
 CLASS none/xf
-	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+	METHOD e_ getName ()Ljava/lang/String;
+	METHOD f_ getDisplayName ()Lnone/eu;
+CLASS none/xh
+	CLASS none/xh$1
+		METHOD c getPosition ()Lnone/cj;
+		METHOD d getPositionVector ()Lnone/ayg;
+		METHOD e getWorld ()Lnone/agk;
+		METHOD f getCommandSenderEntity ()Lnone/qv;
 CLASS none/xi
-	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+	METHOD e_ getName ()Ljava/lang/String;
 CLASS none/xk
 	METHOD z getWorld ()Lnone/agk;
+CLASS none/yn
+	METHOD f_ getDisplayName ()Lnone/eu;
 CLASS none/yq net/minecraft/entity/player/PlayerCapabilities
 	FIELD a disableDamage Z
 	FIELD b isFlying Z
@@ -1272,11 +1377,15 @@ CLASS none/yq net/minecraft/entity/player/PlayerCapabilities
 	METHOD b readCapabilitiesFromNBT (Lnone/dn;)V
 		ARG 0 compound
 CLASS none/ys
-	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+	METHOD e_ getName ()Ljava/lang/String;
+	METHOD f_ getDisplayName ()Lnone/eu;
+	METHOD s_ sendCommandFeedback ()Z
 CLASS none/aga
 	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 	METHOD a addChatMessage (Lnone/eu;)V
-	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+	METHOD e_ getName ()Ljava/lang/String;
+	METHOD f_ getDisplayName ()Lnone/eu;
+	METHOD s_ sendCommandFeedback ()Z
 CLASS none/agi net/minecraft/world/GameRules
 	CLASS none/agi$a Value
 		FIELD a valueString Ljava/lang/String;
@@ -1422,10 +1531,123 @@ CLASS none/agt
 	METHOD d isAirBlock (Lnone/cj;)Z
 	METHOD p getBlockState (Lnone/cj;)Lnone/apj;
 	METHOD s getTileEntity (Lnone/cj;)Lnone/aoe;
+CLASS none/ahx
+	METHOD b getRenderType ()I
+CLASS none/ahz
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+CLASS none/aia
+	METHOD b getRenderType ()I
+CLASS none/aib net/minecraft/block/BlockContainer
+	METHOD <init> (Lnone/avk;)V
+		ARG 0 material
+	METHOD <init> (Lnone/avk;Lnone/avl;)V
+		ARG 0 material
+	METHOD b getRenderType ()I
+CLASS none/aie
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+	METHOD b getRenderType ()I
+CLASS none/aih net/minecraft/block/Block
+	CLASS none/aih$1
+		METHOD a getBreakSound ()Ljava/lang/String;
+	CLASS none/aih$2
+		METHOD a getBreakSound ()Ljava/lang/String;
+	CLASS none/aih$3
+		METHOD a getBreakSound ()Ljava/lang/String;
+	CLASS none/aih$4
+		METHOD a getBreakSound ()Ljava/lang/String;
+		METHOD c getStepSound ()Ljava/lang/String;
+	CLASS none/aih$d SoundType
+		FIELD a soundName Ljava/lang/String;
+		FIELD b volume F
+		FIELD c frequency F
+		METHOD <init> (Ljava/lang/String;FF)V
+			ARG 0 soundName
+			ARG 1 volume
+			ARG 2 frequency
+		METHOD a getBreakSound ()Ljava/lang/String;
+		METHOD c getStepSound ()Ljava/lang/String;
+		METHOD d getVolume ()F
+		METHOD e getFrequency ()F
+	FIELD e soundTypeStone Lnone/aih$d;
+	FIELD f soundTypeWood Lnone/aih$d;
+	FIELD g soundTypeGravel Lnone/aih$d;
+	FIELD h soundTypeGrass Lnone/aih$d;
+	FIELD i soundTypePiston Lnone/aih$d;
+	FIELD j soundTypeMetal Lnone/aih$d;
+	FIELD k soundTypeGlass Lnone/aih$d;
+	FIELD l soundTypeCloth Lnone/aih$d;
+	FIELD m soundTypeSand Lnone/aih$d;
+	FIELD n soundTypeSnow Lnone/aih$d;
+	FIELD o soundTypeLadder Lnone/aih$d;
+	FIELD p soundTypeAnvil Lnone/aih$d;
+	FIELD q soundTypeSlime Lnone/aih$d;
+	METHOD a registerBlock (ILjava/lang/String;Lnone/aih;)V
+	METHOD a (ILnone/kd;Lnone/aih;)V
+	METHOD b getRenderType ()I
+	METHOD c setUnlocalizedName (Ljava/lang/String;)Lnone/aih;
+CLASS none/ail
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+	METHOD b getRenderType ()I
+CLASS none/ais
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+	METHOD b getRenderType ()I
+CLASS none/aiy
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+	METHOD b getRenderType ()I
+CLASS none/aiz
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+CLASS none/ajc
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+	METHOD b getRenderType ()I
+CLASS none/aji
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+	METHOD b getRenderType ()I
+CLASS none/ajm
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+CLASS none/ajo
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+	METHOD b getRenderType ()I
+CLASS none/ajp
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+CLASS none/ajq
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+CLASS none/ajt
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+	METHOD b getRenderType ()I
+CLASS none/aju net/minecraft/block/ITileEntityProvider
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+		ARG 0 world
+		ARG 1 meta
+CLASS none/akb
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+	METHOD b getRenderType ()I
+CLASS none/akf
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+	METHOD b getRenderType ()I
+CLASS none/aks
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+	METHOD b getRenderType ()I
 CLASS none/akw net/minecraft/block/BlockJukebox
 	CLASS none/akw$a TileEntityJukebox
 		METHOD a readFromNBT (Lnone/dn;)V
 		METHOD b writeToNBT (Lnone/dn;)V
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+	METHOD b getRenderType ()I
+CLASS none/alb
+	METHOD b getRenderType ()I
+CLASS none/ale
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+	METHOD b getRenderType ()I
+CLASS none/alo
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+	METHOD b getRenderType ()I
+CLASS none/ams
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+CLASS none/amt
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+CLASS none/anj
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+	METHOD b getRenderType ()I
 CLASS none/aoc net/minecraft/tileentity/TileEntityBanner
 	METHOD a readFromNBT (Lnone/dn;)V
 	METHOD b writeToNBT (Lnone/dn;)V
@@ -1466,6 +1688,11 @@ CLASS none/aog net/minecraft/tileentity/TileEntityChest
 	METHOD a readFromNBT (Lnone/dn;)V
 	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aoh net/minecraft/tileentity/TileEntityCommandBlock
+	CLASS none/aoh$1
+		METHOD c getPosition ()Lnone/cj;
+		METHOD d getPositionVector ()Lnone/ayg;
+		METHOD e getWorld ()Lnone/agk;
+		METHOD f getCommandSenderEntity ()Lnone/qv;
 	METHOD a readFromNBT (Lnone/dn;)V
 	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aoi net/minecraft/tileentity/TileEntityComparator
@@ -1504,11 +1731,23 @@ CLASS none/aov net/minecraft/tileentity/TileEntitySign
 	CLASS none/aov$1
 		METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 		METHOD a addChatMessage (Lnone/eu;)V
-		METHOD e_ getCommandSenderName ()Ljava/lang/String;
+		METHOD c getPosition ()Lnone/cj;
+		METHOD d getPositionVector ()Lnone/ayg;
+		METHOD e getWorld ()Lnone/agk;
+		METHOD e_ getName ()Ljava/lang/String;
+		METHOD f getCommandSenderEntity ()Lnone/qv;
+		METHOD f_ getDisplayName ()Lnone/eu;
+		METHOD s_ sendCommandFeedback ()Z
 	CLASS none/aov$2
 		METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 		METHOD a addChatMessage (Lnone/eu;)V
-		METHOD e_ getCommandSenderName ()Ljava/lang/String;
+		METHOD c getPosition ()Lnone/cj;
+		METHOD d getPositionVector ()Lnone/ayg;
+		METHOD e getWorld ()Lnone/agk;
+		METHOD e_ getName ()Ljava/lang/String;
+		METHOD f getCommandSenderEntity ()Lnone/qv;
+		METHOD f_ getDisplayName ()Lnone/eu;
+		METHOD s_ sendCommandFeedback ()Z
 	METHOD a readFromNBT (Lnone/dn;)V
 	METHOD b writeToNBT (Lnone/dn;)V
 CLASS none/aow net/minecraft/tileentity/TileEntitySkull
@@ -1525,6 +1764,49 @@ CLASS none/aoz net/minecraft/tileentity/TileEntityEndPortal
 CLASS none/ape net/minecraft/tileentity/TileEntityPiston
 	METHOD a readFromNBT (Lnone/dn;)V
 	METHOD b writeToNBT (Lnone/dn;)V
+CLASS none/apf
+	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
+CLASS none/avh
+	METHOD a isSolid ()Z
+	METHOD b blocksLight ()Z
+	METHOD c blocksMovement ()Z
+CLASS none/avi net/minecraft/block/material/MaterialTransparent
+	METHOD <init> (Lnone/avl;)V
+		ARG 0 mapColor
+	METHOD a isSolid ()Z
+	METHOD b blocksLight ()Z
+	METHOD c blocksMovement ()Z
+CLASS none/avj
+	METHOD a isSolid ()Z
+	METHOD c blocksMovement ()Z
+CLASS none/avk net/minecraft/block/material/Material
+	CLASS none/avk$1
+		METHOD c blocksMovement ()Z
+	FIELD M materialMapColor Lnone/avl;
+	FIELD a air Lnone/avk;
+	FIELD b grass Lnone/avk;
+	FIELD c ground Lnone/avk;
+	FIELD d wood Lnone/avk;
+	METHOD <init> (Lnone/avl;)V
+		ARG 0 mapColor
+	METHOD a isSolid ()Z
+	METHOD b blocksLight ()Z
+	METHOD c blocksMovement ()Z
+	METHOD f setRequiresTool ()Lnone/avk;
+	METHOD g setBurning ()Lnone/avk;
+	METHOD i setReplaceable ()Lnone/avk;
+	METHOD r getMaterialMapColor ()Lnone/avl;
+CLASS none/avl net/minecraft/block/material/MapColor
+	FIELD a mapColorArray [Lnone/avl;
+	FIELD b airColor Lnone/avl;
+	FIELD c grassColor Lnone/avl;
+	FIELD d sandColor Lnone/avl;
+	FIELD l dirtColor Lnone/avl;
+	FIELD o woodColor Lnone/avl;
+CLASS none/avm
+	METHOD a isSolid ()Z
+	METHOD b blocksLight ()Z
+	METHOD c blocksMovement ()Z
 CLASS none/axi
 	METHOD a flush ()V
 	METHOD a getChunkLoader (Lnone/aqw;)Lnone/aqn;
@@ -1594,10 +1876,17 @@ CLASS none/ayg net/minecraft/util/Vec3
 	METHOD a subtractReverse (Lnone/ayg;)Lnone/ayg;
 CLASS none/azc net/minecraft/client/Minecraft
 	FIELD K logger Lorg/apache/logging/log4j/Logger;
+	FIELD a isRunningOnMac Z
+	METHOD <init> (Lnone/bep;)V
+		ARG 0 configuration
 	METHOD H stopIntegratedServer ()V
+	METHOD J getCurrentTimeMillis ()J
 	METHOD L getSession ()Lnone/azk;
 	METHOD O getProxy ()Ljava/net/Proxy;
 	METHOD a run ()V
+	METHOD a addServerStatsToSnooper (Lnone/qb;)V
+	METHOD af isSnooperEnabled ()Z
+	METHOD b addServerTypeToSnooper (Lnone/qb;)V
 CLASS none/azk net/minecraft/util/Session
 	CLASS none/azk$a Type
 		FIELD a LEGACY Lnone/azk$a;
@@ -1669,9 +1958,11 @@ CLASS none/bep net/minecraft/client/main/GameConfiguration
 CLASS none/bje
 	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 	METHOD a addChatMessage (Lnone/eu;)V
+	METHOD c getPosition ()Lnone/cj;
 CLASS none/bjf
 	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 	METHOD a addChatMessage (Lnone/eu;)V
+	METHOD c getPosition ()Lnone/cj;
 CLASS none/bjm
 	METHOD b getCombinedLight (Lnone/cj;I)I
 	METHOD p getBlockState (Lnone/cj;)Lnone/apj;
@@ -1687,6 +1978,8 @@ CLASS none/buo net/minecraft/server/integrated/IntegratedServer
 	METHOD a setGameType (Lnone/agn$a;)V
 		ARG 0 gameMode
 	METHOD a setDifficultyForAllWorlds (Lnone/pq;)V
+	METHOD a addServerStatsToSnooper (Lnone/qb;)V
+	METHOD af isSnooperEnabled ()Z
 	METHOD ag isDedicatedServer ()Z
 	METHOD an isCommandBlockEnabled ()Z
 	METHOD h createNewCommandManager ()Lnone/bd;
@@ -1712,12 +2005,21 @@ CLASS net/minecraft/server/MinecraftServer
 		ARG 0 gameType
 	METHOD a addChatMessage (Lnone/eu;)V
 	METHOD a setDifficultyForAllWorlds (Lnone/pq;)V
+	METHOD a addServerStatsToSnooper (Lnone/qb;)V
 	METHOD aB getCurrentTimeMillis ()J
+	METHOD af isSnooperEnabled ()Z
 	METHOD ag isDedicatedServer ()Z
 	METHOD an isCommandBlockEnabled ()Z
 	METHOD ar getConfigurationManager ()Lnone/md;
 	METHOD av getTickCounter ()I
-	METHOD e_ getCommandSenderName ()Ljava/lang/String;
+	METHOD b addServerTypeToSnooper (Lnone/qb;)V
+	METHOD c getPosition ()Lnone/cj;
+	METHOD d getPositionVector ()Lnone/ayg;
+	METHOD e getWorld ()Lnone/agk;
+	METHOD e_ getName ()Ljava/lang/String;
+	METHOD f getCommandSenderEntity ()Lnone/qv;
+	METHOD f_ getDisplayName ()Lnone/eu;
 	METHOD h createNewCommandManager ()Lnone/bd;
 	METHOD o isHardcoreEnabled ()Z
 	METHOD p getOpPermissionLevel ()I
+	METHOD s_ sendCommandFeedback ()Z
