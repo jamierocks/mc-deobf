@@ -1186,6 +1186,39 @@ CLASS none/fb net/minecraft/util/ChatComponentTranslation
 	METHOD g ensureInitialized ()V
 	METHOD i getArgs ()Ljava/lang/String;
 	METHOD j getFormatArgs ()[Ljava/lang/Object;
+CLASS none/kd net/minecraft/util/ResourceLocation
+	FIELD a resourceDomain Ljava/lang/String;
+	FIELD b resourcePath Ljava/lang/String;
+	METHOD <init> (I[Ljava/lang/String;)V
+		ARG 1 resourceName
+	METHOD <init> (Ljava/lang/String;)V
+		ARG 0 resourceName
+	METHOD <init> (Ljava/lang/String;Ljava/lang/String;)V
+		ARG 0 resourceDomainIn
+		ARG 1 resourcePathIn
+	METHOD a getResourcePath ()Ljava/lang/String;
+	METHOD a splitObjectName (Ljava/lang/String;)[Ljava/lang/String;
+		ARG 0 name
+	METHOD b getResourceDomain ()Ljava/lang/String;
+CLASS none/kg net/minecraft/init/Bootstrap
+	FIELD a SYSOUT Ljava/io/PrintStream;
+	FIELD b alreadyRegistered Z
+	FIELD c LOGGER Lorg/apache/logging/log4j/Logger;
+	METHOD a isRegistered ()Z
+	METHOD a println (Ljava/lang/String;)V
+		ARG 0 line
+	METHOD c register ()V
+	METHOD d redirectOutputToLog ()V
+CLASS none/kl net/minecraft/util/LoggingPrintStream
+	FIELD a LOGGER Lorg/apache/logging/log4j/Logger;
+	FIELD b domain Ljava/lang/String;
+	METHOD <init> (Ljava/lang/String;Ljava/io/OutputStream;)V
+		ARG 0 domainIn
+		ARG 1 outStream
+	METHOD a logString (Ljava/lang/String;)V
+		ARG 0 log
+	METHOD println println (Ljava/lang/Object;)V
+	METHOD println println (Ljava/lang/String;)V
 CLASS none/ll
 	FIELD bP logger Lorg/apache/logging/log4j/Logger;
 	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
@@ -1380,6 +1413,91 @@ CLASS none/ys
 	METHOD e_ getName ()Ljava/lang/String;
 	METHOD f_ getDisplayName ()Lnone/eu;
 	METHOD s_ sendCommandFeedback ()Z
+CLASS none/aat net/minecraft/item/ItemArmor
+	CLASS none/aat$a ArmorMaterial
+		FIELD a LEATHER Lnone/aat$a;
+		FIELD b CHAIN Lnone/aat$a;
+		FIELD c IRON Lnone/aat$a;
+		FIELD d GOLD Lnone/aat$a;
+		FIELD e DIAMOND Lnone/aat$a;
+		FIELD f name Ljava/lang/String;
+		METHOD <init> (Ljava/lang/String;ILjava/lang/String;I[II)V
+			ARG 3 name
+		METHOD b getRepairItem ()Lnone/ack;
+		METHOD c getName ()Ljava/lang/String;
+	FIELD m armorMaterial Lnone/aat$a;
+	METHOD <init> (Lnone/aat$a;ILnone/ra;)V
+		ARG 0 armorMaterial
+	METHOD d getArmorMaterial ()Lnone/aat$a;
+CLASS none/aaw net/minecraft/item/ItemAxe
+CLASS none/aaz
+	METHOD c setUnlocalizedName (Ljava/lang/String;)Lnone/ack;
+CLASS none/abe net/minecraft/item/ItemBow
+CLASS none/abk net/minecraft/item/ItemCoal
+CLASS none/abn net/minecraft/creativetab/CreativeTab
+	CLASS none/abn$1
+		METHOD e getTabIconItem ()Lnone/ack;
+	CLASS none/abn$2
+		METHOD e getTabIconItem ()Lnone/ack;
+	CLASS none/abn$3
+		METHOD e getTabIconItem ()Lnone/ack;
+	CLASS none/abn$4
+		METHOD e getTabIconItem ()Lnone/ack;
+	CLASS none/abn$5
+		METHOD e getTabIconItem ()Lnone/ack;
+	CLASS none/abn$6
+		METHOD e getTabIconItem ()Lnone/ack;
+	CLASS none/abn$7
+		METHOD e getTabIconItem ()Lnone/ack;
+	CLASS none/abn$8
+		METHOD e getTabIconItem ()Lnone/ack;
+	CLASS none/abn$9
+		METHOD e getTabIconItem ()Lnone/ack;
+	CLASS none/abn$10
+		METHOD e getTabIconItem ()Lnone/ack;
+	CLASS none/abn$11
+		METHOD e getTabIconItem ()Lnone/ack;
+	CLASS none/abn$12
+		METHOD e getTabIconItem ()Lnone/ack;
+	FIELD b tabBlocks Lnone/abn;
+	FIELD c tabDecorations Lnone/abn;
+	FIELD d tabRedstone Lnone/abn;
+	FIELD e tabTransportation Lnone/abn;
+	FIELD f tabMisc Lnone/abn;
+	FIELD g tabAllSearch Lnone/abn;
+	FIELD h tabFood Lnone/abn;
+	FIELD i tabTools Lnone/abn;
+	FIELD j tabCombat Lnone/abn;
+	FIELD k tabBrewing Lnone/abn;
+	FIELD l tabMaterials Lnone/abn;
+	FIELD m tabInventory Lnone/abn;
+	METHOD e getTabIconItem ()Lnone/ack;
+CLASS none/ack net/minecraft/item/Item
+	CLASS none/ack$a ToolMaterial
+		FIELD a WOOD Lnone/ack$a;
+		FIELD b STONE Lnone/ack$a;
+		FIELD c IRON Lnone/ack$a;
+		FIELD d EMERALD Lnone/ack$a;
+		FIELD e GOLD Lnone/ack$a;
+	METHOD a registerItem (ILjava/lang/String;Lnone/ack;)V
+	METHOD c setUnlocalizedName (Ljava/lang/String;)Lnone/ack;
+CLASS none/acn net/minecraft/init/Items
+	FIELD aE redstone Lnone/ack;
+	FIELD aF snowball Lnone/ack;
+	FIELD aG boat Lnone/ack;
+	FIELD aH leather Lnone/ack;
+	FIELD a iron_shovel Lnone/ack;
+	FIELD aS compass Lnone/ack;
+	FIELD b iron_pickaxe Lnone/ack;
+	FIELD c iron_axe Lnone/ack;
+	FIELD k diamond Lnone/ack;
+	FIELD l iron_ingot Lnone/ack;
+	FIELD m gold_ingot Lnone/ack;
+	METHOD a getRegisteredItem (Ljava/lang/String;)Lnone/ack;
+		ARG 0 name
+CLASS none/acw net/minecraft/item/ItemPickaxe
+CLASS none/adh net/minecraft/item/ItemShovel
+CLASS none/adr net/minecraft/item/ItemSword
 CLASS none/aga
 	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 	METHOD a addChatMessage (Lnone/eu;)V
@@ -1593,6 +1711,17 @@ CLASS none/aih net/minecraft/block/Block
 	METHOD a registerBlock (ILnone/kd;Lnone/aih;)V
 	METHOD b getRenderType ()I
 	METHOD c setUnlocalizedName (Ljava/lang/String;)Lnone/aih;
+		ARG 0 name
+CLASS none/aii net/minecraft/init/Blocks
+	FIELD a air Lnone/aih;
+	FIELD b stone Lnone/aih;
+	FIELD c grass Lnone/aki;
+	FIELD d dirt Lnone/aih;
+	FIELD e cobblestone Lnone/aih;
+	FIELD f planks Lnone/aih;
+	FIELD g sapling Lnone/aih;
+	FIELD h bedrock Lnone/aih;
+	METHOD a getRegisteredBlock (Ljava/lang/String;)Lnone/aih;
 		ARG 0 name
 CLASS none/ail net/minecraft/block/BlockBrewingStand
 	METHOD a createNewTileEntity (Lnone/agk;I)Lnone/aoe;
@@ -1894,9 +2023,24 @@ CLASS none/ayg net/minecraft/util/Vec3
 	METHOD a subtractReverse (Lnone/ayg;)Lnone/ayg;
 CLASS none/azc net/minecraft/client/Minecraft
 	FIELD K logger Lorg/apache/logging/log4j/Logger;
+	FIELD L mojangTitleLocation Lnone/kd;
+	FIELD N resourcePacksDir Ljava/io/File;
+	FIELD S instance Lnone/azc;
+	FIELD U isFullscreen Z
 	FIELD a isRunningOnMac Z
+	FIELD af session Lnone/azk;
+	FIELD ai tempDisplayWidth I
+	FIELD aj tempDisplayHeight I
+	FIELD ak integratedServer Lnone/buo;
+	FIELD al assetsDir Ljava/io/File;
+	FIELD am gameVersion Ljava/lang/String;
+	FIELD av isDemo Z
+	FIELD d displayWidth I
+	FIELD e displayHeight I
+	FIELD v baseDir Ljava/io/File;
 	METHOD <init> (Lnone/bep;)V
 		ARG 0 configuration
+	METHOD A getInstance ()Lnone/azc;
 	METHOD H stopIntegratedServer ()V
 	METHOD J getCurrentTimeMillis ()J
 	METHOD L getSession ()Lnone/azk;
@@ -1904,6 +2048,7 @@ CLASS none/azc net/minecraft/client/Minecraft
 	METHOD a run ()V
 	METHOD a addServerStatsToSnooper (Lnone/qb;)V
 	METHOD af isSnooperEnabled ()Z
+	METHOD aj getSessionInfo ()Ljava/util/Map;
 	METHOD b addServerTypeToSnooper (Lnone/qb;)V
 CLASS none/azk net/minecraft/util/Session
 	CLASS none/azk$a Type
@@ -1940,7 +2085,7 @@ CLASS none/bep net/minecraft/client/main/GameConfiguration
 			ARG 3 hasGLErrors
 	CLASS none/bep$b FolderInformation
 		FIELD a baseDir Ljava/io/File;
-		FIELD b resourcepacksDir Ljava/io/File;
+		FIELD b resourcePacksDir Ljava/io/File;
 		FIELD c assetsDir Ljava/io/File;
 		METHOD <init> (Ljava/io/File;Ljava/io/File;Ljava/io/File;Ljava/lang/String;)V
 			ARG 0 baseDir
