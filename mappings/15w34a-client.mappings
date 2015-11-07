@@ -131,7 +131,7 @@ CLASS none/m net/minecraft/command/ICommandSender
 	METHOD f getCommandSenderEntity ()Lnone/qv;
 	METHOD f_ getDisplayName ()Lnone/eu;
 	METHOD s_ sendCommandFeedback ()Z
-CLASS none/n
+CLASS none/n net/minecraft/command/CommandResultStats
 	CLASS none/n$1
 		METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 		METHOD a addChatMessage (Lnone/eu;)V
@@ -142,6 +142,29 @@ CLASS none/n
 		METHOD f getCommandSenderEntity ()Lnone/qv;
 		METHOD f_ getDisplayName ()Lnone/eu;
 		METHOD s_ sendCommandFeedback ()Z
+	CLASS none/n$a Type
+		FIELD a SUCCESS_COUNT Lnone/n$a;
+		FIELD b AFFECTED_BLOCKS Lnone/n$a;
+		FIELD c AFFECTED_ENTITIES Lnone/n$a;
+		FIELD d AFFECTED_ITEMS Lnone/n$a;
+		FIELD e QUERY_RESULT Lnone/n$a;
+		FIELD f id I
+		FIELD g name Ljava/lang/String;
+		METHOD a getId ()I
+		METHOD a getTypeByName (Ljava/lang/String;)Lnone/n$a;
+			ARG 0 name
+		METHOD b getName ()Ljava/lang/String;
+		METHOD c getTypeNames ()[Ljava/lang/String;
+		METHOD values values ()[Lnone/n$a;
+CLASS none/o net/minecraft/command/PlayerSelector
+	FIELD a tokenPattern Ljava/util/regex/Pattern;
+	FIELD b intListPattern Ljava/util/regex/Pattern;
+	FIELD c keyValueListPattern Ljava/util/regex/Pattern;
+	FIELD d WORLD_BINDING_ARGS Ljava/util/Set;
+	METHOD a matchOnePlayer (Lnone/m;Ljava/lang/String;)Lnone/ll;
+		ARG 0 sender
+		ARG 1 name
+	METHOD a matchOneEntity (Lnone/m;Ljava/lang/String;Ljava/lang/Class;)Lnone/qv;
 CLASS none/p net/minecraft/command/server/CommandAchievement
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
@@ -180,12 +203,18 @@ CLASS none/r net/minecraft/command/server/CommandBanPlayer
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
 		ARG 0 sender
-CLASS none/s
+CLASS none/s net/minecraft/command/CommandBlockData
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 1 args
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/t net/minecraft/command/CommandClearInventory
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
@@ -214,12 +243,18 @@ CLASS none/u net/minecraft/command/CommandClone
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
 		ARG 0 sender
-CLASS none/v
+CLASS none/v net/minecraft/command/CommandCompare
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 1 args
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/w net/minecraft/command/server/CommandDeOp
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
@@ -290,13 +325,16 @@ CLASS none/ab net/minecraft/command/CommandEnchant
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
 		ARG 0 sender
 	METHOD d getListOfPlayers ()[Ljava/lang/String;
-CLASS none/ac
+CLASS none/ac net/minecraft/command/CommandEntityData
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
-CLASS none/ad
+		ARG 0 sender
+CLASS none/ad net/minecraft/command/CommandExecuteAt
 	CLASS none/ad$1
 		METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 		METHOD a addChatMessage (Lnone/eu;)V
@@ -309,10 +347,16 @@ CLASS none/ad
 		METHOD s_ sendCommandFeedback ()Z
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 1 args
+		ARG 2 pos
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/ae net/minecraft/command/CommandXP
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
@@ -326,12 +370,18 @@ CLASS none/ae net/minecraft/command/CommandXP
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
 		ARG 0 sender
 	METHOD d getAllUsernames ()[Ljava/lang/String;
-CLASS none/af
+CLASS none/af net/minecraft/command/CommandFill
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 1 args
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/ag net/minecraft/command/CommandDifficulty
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
@@ -679,14 +729,20 @@ CLASS none/br net/minecraft/command/CommandTime
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
 		ARG 0 sender
-CLASS none/bs
+CLASS none/bs net/minecraft/command/CommandTitle
 	FIELD a logger Lorg/apache/logging/log4j/Logger;
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 1 args
+		ARG 2 pos
 	METHOD b isUsernameIndex ([Ljava/lang/String;I)Z
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/bt net/minecraft/command/CommandToggleDownfall
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
@@ -696,12 +752,18 @@ CLASS none/bt net/minecraft/command/CommandToggleDownfall
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
 		ARG 0 sender
 	METHOD d toggleDownfall ()V
-CLASS none/bu
+CLASS none/bu net/minecraft/command/CommandTrigger
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 1 args
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/bv net/minecraft/command/CommandWeather
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
@@ -719,12 +781,18 @@ CLASS none/bw net/minecraft/command/server/CommandWhitelist
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
-CLASS none/bx
+CLASS none/bx net/minecraft/command/CommandWorldBorder
 	METHOD a getRequiredPermissionLevel ()I
 	METHOD a processCommand (Lnone/m;[Ljava/lang/String;)V
+		ARG 0 sender
+		ARG 1 args
 	METHOD a addTabCompletionOptions (Lnone/m;[Ljava/lang/String;Lnone/cj;)Ljava/util/List;
+		ARG 0 sender
+		ARG 1 args
+		ARG 2 pos
 	METHOD c getCommandName ()Ljava/lang/String;
 	METHOD c getCommandUsage (Lnone/m;)Ljava/lang/String;
+		ARG 0 sender
 CLASS none/bz net/minecraft/command/CommandException
 	FIELD a errorObjects [Ljava/lang/Object;
 	METHOD <init> (Ljava/lang/String;[Ljava/lang/Object;)V
@@ -1219,8 +1287,8 @@ CLASS none/kl net/minecraft/util/LoggingPrintStream
 		ARG 0 log
 	METHOD println println (Ljava/lang/Object;)V
 	METHOD println println (Ljava/lang/String;)V
-CLASS none/ll
-	FIELD bP logger Lorg/apache/logging/log4j/Logger;
+CLASS none/ll net/minecraft/entity/player/EntityPlayerMP
+	FIELD bP LOGGER Lorg/apache/logging/log4j/Logger;
 	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 	METHOD a addChatMessage (Lnone/eu;)V
 	METHOD c getPosition ()Lnone/cj;
@@ -1370,6 +1438,9 @@ CLASS none/qv net/minecraft/entity/Entity
 	METHOD f getCommandSenderEntity ()Lnone/qv;
 	METHOD f_ getDisplayName ()Lnone/eu;
 	METHOD s_ sendCommandFeedback ()Z
+CLASS none/re net/minecraft/entity/EntityLivingBase
+	METHOD <init> (Lnone/agk;)V
+		ARG 0 world
 CLASS none/vd
 	METHOD e_ getName ()Ljava/lang/String;
 CLASS none/vg
@@ -1409,10 +1480,24 @@ CLASS none/yq net/minecraft/entity/player/PlayerCapabilities
 		ARG 0 speed
 	METHOD b readCapabilitiesFromNBT (Lnone/dn;)V
 		ARG 0 compound
-CLASS none/ys
+CLASS none/ys net/minecraft/entity/player/EntityPlayer
+	CLASS none/ys$b EnumChatVisibility
+		FIELD a FULL Lnone/ys$b;
+		FIELD b SYSTEM Lnone/ys$b;
+		FIELD c HIDDEN Lnone/ys$b;
 	METHOD e_ getName ()Ljava/lang/String;
 	METHOD f_ getDisplayName ()Lnone/eu;
 	METHOD s_ sendCommandFeedback ()Z
+CLASS none/zs net/minecraft/inventory/Container
+CLASS none/zx net/minecraft/inventory/ICrafting
+	METHOD a (Lnone/zs;II)V
+		ARG 0 container
+	METHOD a (Lnone/zs;ILnone/acl;)V
+		ARG 0 container
+	METHOD a (Lnone/zs;Ljava/util/List;)V
+		ARG 0 container
+	METHOD a (Lnone/zs;Lnone/pn;)V
+		ARG 0 container
 CLASS none/aat net/minecraft/item/ItemArmor
 	CLASS none/aat$a ArmorMaterial
 		FIELD a LEATHER Lnone/aat$a;
@@ -1762,6 +1847,8 @@ CLASS none/agk net/minecraft/world/World
 		ARG 0 saveHandler
 		ARG 1 worldInfo
 	METHOD I getWorldType ()Lnone/agp;
+	METHOD Q getSaveHandler ()Lnone/axo;
+	METHOD R getWorldInfo ()Lnone/axn;
 	METHOD S getGameRules ()Lnone/agi;
 	METHOD Y extendedLevelsInChunkCache ()Z
 	METHOD a getStrongPower (Lnone/cj;Lnone/cq;)I
@@ -1980,7 +2067,26 @@ CLASS none/aii net/minecraft/init/Blocks
 	FIELD aE unlit_redstone_torch Lnone/aih;
 	FIELD aF redstone_torch Lnone/aih;
 	FIELD aG stone_button Lnone/aih;
+	FIELD aH snow_layer Lnone/aih;
+	FIELD aI ice Lnone/aih;
+	FIELD aJ snow Lnone/aih;
+	FIELD aK cactus Lnone/aio;
+	FIELD aL clay Lnone/aih;
 	FIELD a air Lnone/aih;
+	FIELD aM reeds Lnone/aml;
+	FIELD aN jukebox Lnone/aih;
+	FIELD aO fence Lnone/aih;
+	FIELD aP spruce_fence Lnone/aih;
+	FIELD aQ birch_fence Lnone/aih;
+	FIELD aR jungle_fence Lnone/aih;
+	FIELD aS dark_oak_fence Lnone/aih;
+	FIELD aT acacia_fence Lnone/aih;
+	FIELD aU pumpkin Lnone/aih;
+	FIELD aV netherrack Lnone/aih;
+	FIELD aW soul_sand Lnone/aih;
+	FIELD aX glowstone Lnone/aih;
+	FIELD aY portal Lnone/alv;
+	FIELD aZ lit_pumpkin Lnone/aih;
 	FIELD aa torch Lnone/aih;
 	FIELD ab fire Lnone/ajz;
 	FIELD ac mob_spawner Lnone/aih;
@@ -2007,7 +2113,58 @@ CLASS none/aii net/minecraft/init/Blocks
 	FIELD ax wall_sign Lnone/aih;
 	FIELD ay lever Lnone/aih;
 	FIELD az stone_pressure_plate Lnone/aih;
+	FIELD bA nether_brick_stairs Lnone/aih;
+	FIELD bB nether_wart Lnone/aih;
+	FIELD bC enchanting_table Lnone/aih;
+	FIELD bD brewing_stand Lnone/aih;
+	FIELD bE cauldron Lnone/air;
+	FIELD bF end_portal Lnone/aih;
+	FIELD bG end_portal_frame Lnone/aih;
+	FIELD bH end_stone Lnone/aih;
+	FIELD bI dragon_egg Lnone/aih;
+	FIELD bJ redstone_lamp Lnone/aih;
+	FIELD bK lit_redstone_lamp Lnone/aih;
+	FIELD bL double_wooden_slab Lnone/akm;
 	FIELD b stone Lnone/aih;
+	FIELD bM wooden_slab Lnone/akm;
+	FIELD bN cocoa Lnone/aih;
+	FIELD bO sandstone_stairs Lnone/aih;
+	FIELD bP emerald_ore Lnone/aih;
+	FIELD bQ ender_chest Lnone/aih;
+	FIELD bR tripwore_hook Lnone/anr;
+	FIELD bS tripwore Lnone/aih;
+	FIELD bT emerald_block Lnone/aih;
+	FIELD bU spruce_stairs Lnone/aih;
+	FIELD bV birch_stairs Lnone/aih;
+	FIELD bW jungle_stairs Lnone/aih;
+	FIELD bX command_block Lnone/aih;
+	FIELD bY beacon Lnone/aie;
+	FIELD ba cake Lnone/aih;
+	FIELD bb unpowered_repeater Lnone/amm;
+	FIELD bc powered_repeater Lnone/amm;
+	FIELD bd trapdoor Lnone/aih;
+	FIELD be monster_egg Lnone/aih;
+	FIELD bf stonebrick Lnone/aih;
+	FIELD bg brown_mushroom_block Lnone/aih;
+	FIELD bh red_mushroom_block Lnone/aih;
+	FIELD bi iron_bars Lnone/aih;
+	FIELD bj glass_pane Lnone/aih;
+	FIELD bk melon_block Lnone/aih;
+	FIELD bl pumpkin_stem Lnone/aih;
+	FIELD bm melon_stem Lnone/aih;
+	FIELD bn vine Lnone/aih;
+	FIELD bo fence_gate Lnone/aih;
+	FIELD bp spruce_fence_gate Lnone/aih;
+	FIELD bq birch_fence_gate Lnone/aih;
+	FIELD br jungle_fence_gate Lnone/aih;
+	FIELD bs dark_oak_fence_gate Lnone/aih;
+	FIELD bt acacia_fence_gate Lnone/aih;
+	FIELD bu brick_stairs Lnone/aih;
+	FIELD bv stone_brick_stairs Lnone/aih;
+	FIELD bw mycelium Lnone/alh;
+	FIELD bx waterlily Lnone/aih;
+	FIELD by nether_brick Lnone/aih;
+	FIELD bz nether_brick_fence Lnone/aih;
 	FIELD c grass Lnone/aki;
 	FIELD d dirt Lnone/aih;
 	FIELD e cobblestone Lnone/aih;
@@ -2269,6 +2426,8 @@ CLASS none/axi
 	METHOD a flush ()V
 	METHOD a getChunkLoader (Lnone/aqw;)Lnone/aqn;
 	METHOD a saveWorldInfoWithPlayer (Lnone/axn;Lnone/dn;)V
+CLASS none/axj
+	METHOD a getName ()Ljava/lang/String;
 CLASS none/axk
 	METHOD a getSeed ()J
 	METHOD q getGameType ()Lnone/agn$a;
@@ -2287,6 +2446,8 @@ CLASS none/axl
 	METHOD d loadWorldInfo ()Lnone/axn;
 	METHOD e getPlayerNBTManager ()Lnone/axw;
 	METHOD g getWorldDirectoryName ()Ljava/lang/String;
+CLASS none/axm
+	METHOD a getName ()Ljava/lang/String;
 CLASS none/axn net/minecraft/world/storage/WorldInfo
 	FIELD O theGameRules Lnone/agi;
 	FIELD f terrainType Lnone/agp;
@@ -2310,6 +2471,8 @@ CLASS none/axo net/minecraft/world/storage/ISaveHandler
 	METHOD d loadWorldInfo ()Lnone/axn;
 	METHOD e getPlayerNBTManager ()Lnone/axw;
 	METHOD g getWorldDirectoryName ()Ljava/lang/String;
+CLASS none/axq net/minecraft/world/storage/ISaveFormat
+	METHOD a getName ()Ljava/lang/String;
 CLASS none/axv
 	METHOD a flush ()V
 	METHOD a getMapFileFromName (Ljava/lang/String;)Ljava/io/File;
@@ -2429,6 +2592,14 @@ CLASS none/bep net/minecraft/client/main/GameConfiguration
 		ARG 2 folderInfo
 		ARG 3 gameInfo
 		ARG 4 serverInfo
+CLASS none/bhi net/minecraft/client/multiplayer/ServerAddress
+	FIELD a address Ljava/lang/String;
+	FIELD b port I
+	METHOD <init> (Ljava/lang/String;I)V
+		ARG 0 address
+		ARG 1 port
+	METHOD a getAddress ()Ljava/lang/String;
+	METHOD b getPort ()I
 CLASS none/bje
 	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 	METHOD a addChatMessage (Lnone/eu;)V
