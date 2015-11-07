@@ -1430,9 +1430,16 @@ CLASS none/aat net/minecraft/item/ItemArmor
 		ARG 0 armorMaterial
 	METHOD d getArmorMaterial ()Lnone/aat$a;
 CLASS none/aaw net/minecraft/item/ItemAxe
+CLASS none/aax net/minecraft/item/ItemBanner
+CLASS none/aay net/minecraft/item/ItemBed
 CLASS none/aaz
 	METHOD c setUnlocalizedName (Ljava/lang/String;)Lnone/ack;
+CLASS none/aba net/minecraft/item/ItemReeds
+CLASS none/abb net/minecraft/item/ItemBoat
+CLASS none/abc net/minecraft/item/ItemBook
 CLASS none/abe net/minecraft/item/ItemBow
+CLASS none/abf net/minecraft/item/ItemSoup
+CLASS none/abg net/minecraft/item/ItemBucket
 CLASS none/abk net/minecraft/item/ItemCoal
 CLASS none/abn net/minecraft/creativetab/CreativeTab
 	CLASS none/abn$1
@@ -1472,6 +1479,21 @@ CLASS none/abn net/minecraft/creativetab/CreativeTab
 	FIELD l tabMaterials Lnone/abn;
 	FIELD m tabInventory Lnone/abn;
 	METHOD e getTabIconItem ()Lnone/ack;
+CLASS none/abp net/minecraft/item/ItemDoor
+CLASS none/abs net/minecraft/item/ItemDye
+CLASS none/abu net/minecraft/item/ItemEgg
+CLASS none/abv net/minecraft/item/ItemEmptyMap
+CLASS none/abx net/minecraft/item/ItemEndereye
+CLASS none/aby net/minecraft/item/ItemEnderPearl
+CLASS none/abz net/minecraft/item/ItemExpBottle
+CLASS none/aca net/minecraft/item/ItemFireball
+CLASS none/acd net/minecraft/item/ItemFishFood
+CLASS none/ace net/minecraft/item/ItemFishingRod
+CLASS none/acf net/minecraft/item/ItemFlintAndSteel
+CLASS none/acg net/minecraft/item/ItemFood
+CLASS none/ach net/minecraft/item/ItemAppleGold
+CLASS none/aci net/minecraft/item/ItemHangingEntity
+CLASS none/acj net/minecraft/item/ItemHoe
 CLASS none/ack net/minecraft/item/Item
 	CLASS none/ack$a ToolMaterial
 		FIELD a WOOD Lnone/ack$a;
@@ -1479,25 +1501,237 @@ CLASS none/ack net/minecraft/item/Item
 		FIELD c IRON Lnone/ack$a;
 		FIELD d EMERALD Lnone/ack$a;
 		FIELD e GOLD Lnone/ack$a;
+		METHOD f getRepairItem ()Lnone/ack;
+	FIELD o unlocalizedName Ljava/lang/String;
 	METHOD a registerItem (ILjava/lang/String;Lnone/ack;)V
+	METHOD a setCreativeTab (Lnone/abn;)Lnone/ack;
+	METHOD a getItemFromBlock (Lnone/aih;)Lnone/ack;
+	METHOD a registerItemBlock (Lnone/aih;Lnone/ack;)V
 	METHOD c setUnlocalizedName (Ljava/lang/String;)Lnone/ack;
+		ARG 0 name
+	METHOD c registerItemBlock (Lnone/aih;)V
+	METHOD t registerItems ()V
 CLASS none/acn net/minecraft/init/Items
+	FIELD A stick Lnone/ack;
+	FIELD B bowl Lnone/ack;
+	FIELD C mushroom_stew Lnone/ack;
+	FIELD D golden_sword Lnone/ack;
+	FIELD E golden_shovel Lnone/ack;
+	FIELD F golden_pickaxe Lnone/ack;
+	FIELD G golden_axe Lnone/ack;
+	FIELD H string Lnone/ack;
+	FIELD I feather Lnone/ack;
+	FIELD J gunpowder Lnone/ack;
+	FIELD K wooden_hoe Lnone/ack;
+	FIELD L stone_hoe Lnone/ack;
+	FIELD M iron_hoe Lnone/ack;
+	FIELD N diamond_hoe Lnone/ack;
+	FIELD O golden_hoe Lnone/ack;
+	FIELD P wheat_seeds Lnone/ack;
+	FIELD Q wheat Lnone/ack;
+	FIELD R bread Lnone/ack;
+	FIELD S leather_helmet Lnone/aat;
+	FIELD T leather_chestplate Lnone/aat;
+	FIELD U leather_leggings Lnone/aat;
+	FIELD V leather_boots Lnone/aat;
+	FIELD W chainmail_helmet Lnone/aat;
+	FIELD X chainmail_chestplate Lnone/aat;
+	FIELD Y chainmail_leggings Lnone/aat;
+	FIELD Z chainmail_boots Lnone/aat;
+	FIELD aA lava_bucket Lnone/ack;
+	FIELD aB minecart Lnone/ack;
+	FIELD aC saddle Lnone/ack;
+	FIELD aD iron_door Lnone/ack;
 	FIELD aE redstone Lnone/ack;
 	FIELD aF snowball Lnone/ack;
 	FIELD aG boat Lnone/ack;
 	FIELD aH leather Lnone/ack;
+	FIELD aI milk_bucket Lnone/ack;
+	FIELD aJ brick Lnone/ack;
+	FIELD aK clay_ball Lnone/ack;
+	FIELD aL reeds Lnone/ack;
 	FIELD a iron_shovel Lnone/ack;
+	FIELD aM paper Lnone/ack;
+	FIELD aN book Lnone/ack;
+	FIELD aO slime_ball Lnone/ack;
+	FIELD aP chest_minecart Lnone/ack;
+	FIELD aQ furnace_minecart Lnone/ack;
+	FIELD aR egg Lnone/ack;
 	FIELD aS compass Lnone/ack;
+	FIELD aT fishing_rod Lnone/ace;
+	FIELD aU clock Lnone/ack;
+	FIELD aV glowstone_dust Lnone/ack;
+	FIELD aW sish Lnone/ack;
+	FIELD aX cooked_sish Lnone/ack;
+	FIELD aY dye Lnone/ack;
+	FIELD aZ bone Lnone/ack;
+	FIELD aa iron_helmet Lnone/aat;
+	FIELD ab iron_chestplate Lnone/aat;
+	FIELD ac iron_leggings Lnone/aat;
+	FIELD ad iron_boots Lnone/aat;
+	FIELD ae diamond_helmet Lnone/aat;
+	FIELD af diamond_chestplate Lnone/aat;
+	FIELD ag diamond_leggings Lnone/aat;
+	FIELD ah diamond_boots Lnone/aat;
+	FIELD ai golden_helmet Lnone/aat;
+	FIELD aj golden_chestplate Lnone/aat;
+	FIELD ak golden_leggings Lnone/aat;
+	FIELD al golden_boots Lnone/aat;
+	FIELD am flint Lnone/ack;
+	FIELD an porkchop Lnone/ack;
+	FIELD ao cooked_porkchop Lnone/ack;
+	FIELD ap painting Lnone/ack;
+	FIELD aq golden_apple Lnone/ack;
+	FIELD ar sign Lnone/ack;
+	FIELD as wooden_door Lnone/ack;
+	FIELD at spruce_door Lnone/ack;
+	FIELD au birch_door Lnone/ack;
+	FIELD av jundle_door Lnone/ack;
+	FIELD aw acacia_door Lnone/ack;
+	FIELD ax dark_oak_door Lnone/ack;
+	FIELD ay bucket Lnone/ack;
+	FIELD az water_bucket Lnone/ack;
+	FIELD bA nether_wart Lnone/ack;
+	FIELD bB potion Lnone/acy;
+	FIELD bC splash_potion Lnone/acy;
+	FIELD bD lingering_potion Lnone/acy;
+	FIELD bE glass_bottle Lnone/ack;
+	FIELD bF dragon_breath Lnone/ack;
+	FIELD bG spider_eye Lnone/ack;
+	FIELD bH fermented_spider_eye Lnone/ack;
+	FIELD bI blaze_powder Lnone/ack;
+	FIELD bJ magma_cream Lnone/ack;
+	FIELD bK brewing_stand Lnone/ack;
+	FIELD bL cauldron Lnone/ack;
 	FIELD b iron_pickaxe Lnone/ack;
+	FIELD bM ender_eye Lnone/ack;
+	FIELD bN speckled_melon Lnone/ack;
+	FIELD bO spawn_egg Lnone/ack;
+	FIELD bP experience_bottle Lnone/ack;
+	FIELD bQ fire_charge Lnone/ack;
+	FIELD bR writable_book Lnone/ack;
+	FIELD bS written_book Lnone/ack;
+	FIELD bT emerald Lnone/ack;
+	FIELD bU item_frame Lnone/ack;
+	FIELD bV flower_pot Lnone/ack;
+	FIELD bW carrot Lnone/ack;
+	FIELD bX potato Lnone/ack;
+	FIELD bY baked_potato Lnone/ack;
+	FIELD bZ poisonous_potato Lnone/ack;
+	FIELD ba sugar Lnone/ack;
+	FIELD bb cake Lnone/ack;
+	FIELD bc bed Lnone/ack;
+	FIELD bd repeater Lnone/ack;
+	FIELD be cookie Lnone/ack;
+	FIELD bf filled_map Lnone/acr;
+	FIELD bg shears Lnone/adf;
+	FIELD bh melon Lnone/ack;
+	FIELD bi pumpkin_seeds Lnone/ack;
+	FIELD bj melon_seeds Lnone/ack;
+	FIELD bk beef Lnone/ack;
+	FIELD bl cooked_beef Lnone/ack;
+	FIELD bm chicken Lnone/ack;
+	FIELD bn cooked_chicken Lnone/ack;
+	FIELD bo mutton Lnone/ack;
+	FIELD bp cooked_mutton Lnone/ack;
+	FIELD bq rabbit Lnone/ack;
+	FIELD br cooked_rabbit Lnone/ack;
+	FIELD bs rabbit_stew Lnone/ack;
+	FIELD bt rabbit_foot Lnone/ack;
+	FIELD bu rabbit_hide Lnone/ack;
+	FIELD bv rotten_flesh Lnone/ack;
+	FIELD bw ender_pearl Lnone/ack;
+	FIELD bx blaze_rod Lnone/ack;
+	FIELD by ghast_tear Lnone/ack;
+	FIELD bz gold_nugget Lnone/ack;
+	FIELD cA record_mall Lnone/ack;
+	FIELD cB record_mallohi Lnone/ack;
+	FIELD cC record_stal Lnone/ack;
+	FIELD cD record_strad Lnone/ack;
+	FIELD cE record_wart Lnone/ack;
+	FIELD cF record_11 Lnone/ack;
+	FIELD cG record_wait Lnone/ack;
+	FIELD cH prismarine_shard Lnone/ack;
+	FIELD cI prismarine_crystals Lnone/ack;
+	FIELD cJ banner Lnone/ack;
+	FIELD cK shield Lnone/ack;
+	FIELD cL chrous_fruit Lnone/ack;
 	FIELD c iron_axe Lnone/ack;
+	FIELD cM chorus_fruit_popped Lnone/ack;
+	FIELD cN beetroot_seeds Lnone/ack;
+	FIELD cO beetroot Lnone/ack;
+	FIELD cP beetroot_soup Lnone/ack;
+	FIELD ca map Lnone/abv;
+	FIELD cb golden_carrot Lnone/ack;
+	FIELD cc skull Lnone/ack;
+	FIELD cd carrot_on_a_stick Lnone/ack;
+	FIELD ce nether_star Lnone/ack;
+	FIELD cf pumpkin_pie Lnone/ack;
+	FIELD cg fireworks Lnone/ack;
+	FIELD ch firework_charge Lnone/ack;
+	FIELD ci enchanted_book Lnone/abw;
+	FIELD cj comparator Lnone/ack;
+	FIELD ck netherbrick Lnone/ack;
+	FIELD cl quartz Lnone/ack;
+	FIELD cm tnt_minecart Lnone/ack;
+	FIELD cn hopper_minecart Lnone/ack;
+	FIELD co armor_stand Lnone/aau;
+	FIELD cp iron_horse_armor Lnone/ack;
+	FIELD cq golden_horse_armor Lnone/ack;
+	FIELD cr diamond_horse_armor Lnone/ack;
+	FIELD cs lead Lnone/ack;
+	FIELD ct name_tag Lnone/ack;
+	FIELD cu command_block_minecart Lnone/ack;
+	FIELD cv record_13 Lnone/ack;
+	FIELD cw record_cat Lnone/ack;
+	FIELD cx record_blocks Lnone/ack;
+	FIELD cy record_chirps Lnone/ack;
+	FIELD cz record_far Lnone/ack;
+	FIELD d flint_and_steel Lnone/ack;
+	FIELD e apple Lnone/ack;
+	FIELD f bow Lnone/abe;
+	FIELD g arrow Lnone/ack;
+	FIELD h spectral_arrow Lnone/ack;
+	FIELD i tipped_arrow Lnone/ack;
+	FIELD j coal Lnone/ack;
 	FIELD k diamond Lnone/ack;
 	FIELD l iron_ingot Lnone/ack;
 	FIELD m gold_ingot Lnone/ack;
+	FIELD n iron_sword Lnone/ack;
+	FIELD o wooden_sword Lnone/ack;
+	FIELD p wooden_shovel Lnone/ack;
+	FIELD q wooden_pickaxe Lnone/ack;
+	FIELD r wooden_axe Lnone/ack;
+	FIELD s stone_sword Lnone/ack;
+	FIELD t stone_shovel Lnone/ack;
+	FIELD u stone_pickaxe Lnone/ack;
+	FIELD v stone_axe Lnone/ack;
+	FIELD w diamond_sword Lnone/ack;
+	FIELD x diamond_shovel Lnone/ack;
+	FIELD y diamond_pickaxe Lnone/ack;
+	FIELD z diamond_axe Lnone/ack;
 	METHOD a getRegisteredItem (Ljava/lang/String;)Lnone/ack;
 		ARG 0 name
+CLASS none/aco net/minecraft/item/ItemLead
+CLASS none/acr net/minecraft/item/ItemMap
+CLASS none/acs net/minecraft/item/ItemBucketMilk
+CLASS none/act net/minecraft/item/ItemMinecart
+CLASS none/acv net/minecraft/item/ItemNameTag
 CLASS none/acw net/minecraft/item/ItemPickaxe
+CLASS none/ada net/minecraft/item/ItemRecord
+CLASS none/adb net/minecraft/item/ItemRedstone
+CLASS none/adc net/minecraft/item/ItemSaddle
+CLASS none/add net/minecraft/item/ItemSeedFood
+CLASS none/ade net/minecraft/item/ItemSeeds
+CLASS none/adf net/minecraft/item/ItemShears
 CLASS none/adh net/minecraft/item/ItemShovel
+CLASS none/adi net/minecraft/item/ItemSign
+CLASS none/adk net/minecraft/item/ItemSkull
+CLASS none/adn net/minecraft/item/ItemSnowball
+CLASS none/ado net/minecraft/item/ItemSpawnEgg
 CLASS none/adr net/minecraft/item/ItemSword
+CLASS none/adw net/minecraft/item/ItemWritableBook
+CLASS none/adx net/minecraft/item/ItemEditableBook
 CLASS none/aga
 	METHOD a canCommandSenderUseCommand (ILjava/lang/String;)Z
 	METHOD a addChatMessage (Lnone/eu;)V
@@ -1713,7 +1947,66 @@ CLASS none/aih net/minecraft/block/Block
 	METHOD c setUnlocalizedName (Ljava/lang/String;)Lnone/aih;
 		ARG 0 name
 CLASS none/aii net/minecraft/init/Blocks
+	FIELD A sandstone Lnone/aih;
+	FIELD B noteblock Lnone/aih;
+	FIELD C bed Lnone/aih;
+	FIELD D golden_rail Lnone/aih;
+	FIELD E detector_rail Lnone/aih;
+	FIELD F sticky_piston Lnone/apc;
+	FIELD G web Lnone/aih;
+	FIELD H tallgrass Lnone/ank;
+	FIELD I deadbush Lnone/ajd;
+	FIELD J piston Lnone/apc;
+	FIELD K piston_head Lnone/apd;
+	FIELD L wool Lnone/aih;
+	FIELD M piston_extension Lnone/apf;
+	FIELD N yellow_flower Lnone/aka;
+	FIELD O red_flower Lnone/aka;
+	FIELD P brown_mushroom Lnone/aim;
+	FIELD Q red_mushroom Lnone/aim;
+	FIELD R gold_block Lnone/aih;
+	FIELD S iron_block Lnone/aih;
+	FIELD T double_stone_slab Lnone/akm;
+	FIELD U stone_slab Lnone/akm;
+	FIELD V brick_block Lnone/aih;
+	FIELD W tnt Lnone/aih;
+	FIELD X bookshelf Lnone/aih;
+	FIELD Y mossy_cobblestone Lnone/aih;
+	FIELD Z obsidian Lnone/aih;
+	FIELD aA iron_door Lnone/aih;
+	FIELD aB wooden_pressure_plate Lnone/aih;
+	FIELD aC redstone_ore Lnone/aih;
+	FIELD aD lit_redstone_ore Lnone/aih;
+	FIELD aE unlit_redstone_torch Lnone/aih;
+	FIELD aF redstone_torch Lnone/aih;
+	FIELD aG stone_button Lnone/aih;
 	FIELD a air Lnone/aih;
+	FIELD aa torch Lnone/aih;
+	FIELD ab fire Lnone/ajz;
+	FIELD ac mob_spawner Lnone/aih;
+	FIELD ad oak_stairs Lnone/aih;
+	FIELD ae chest Lnone/ais;
+	FIELD af redstone_wire Lnone/ami;
+	FIELD ag diamond_ore Lnone/aih;
+	FIELD ah diamond_block Lnone/aih;
+	FIELD ai crafting_table Lnone/aih;
+	FIELD aj wheat Lnone/aih;
+	FIELD ak farmland Lnone/aih;
+	FIELD al furnace Lnone/aih;
+	FIELD am lit_furnace Lnone/aih;
+	FIELD an standing_sign Lnone/aih;
+	FIELD ao wooden_door Lnone/aih;
+	FIELD ap spruce_door Lnone/aih;
+	FIELD aq birch_door Lnone/aih;
+	FIELD ar jungle_door Lnone/aih;
+	FIELD as acacia_door Lnone/aih;
+	FIELD at dark_oak_door Lnone/aih;
+	FIELD au ladder Lnone/aih;
+	FIELD av rail Lnone/aih;
+	FIELD aw stone_stairs Lnone/aih;
+	FIELD ax wall_sign Lnone/aih;
+	FIELD ay lever Lnone/aih;
+	FIELD az stone_pressure_plate Lnone/aih;
 	FIELD b stone Lnone/aih;
 	FIELD c grass Lnone/aki;
 	FIELD d dirt Lnone/aih;
@@ -1721,6 +2014,24 @@ CLASS none/aii net/minecraft/init/Blocks
 	FIELD f planks Lnone/aih;
 	FIELD g sapling Lnone/aih;
 	FIELD h bedrock Lnone/aih;
+	FIELD i flowing_water Lnone/ajn;
+	FIELD j water Lnone/and;
+	FIELD k flowing_lava Lnone/ajn;
+	FIELD l lava Lnone/and;
+	FIELD m sand Lnone/amo;
+	FIELD n gravel Lnone/aih;
+	FIELD o gold_ore Lnone/aih;
+	FIELD p iron_ore Lnone/aih;
+	FIELD q coal_ore Lnone/aih;
+	FIELD r log Lnone/aih;
+	FIELD s log2 Lnone/aih;
+	FIELD t leaves Lnone/aky;
+	FIELD u leaves2 Lnone/aky;
+	FIELD v sponge Lnone/aih;
+	FIELD w glass Lnone/aih;
+	FIELD x lapis_ore Lnone/aih;
+	FIELD y lapis_block Lnone/aih;
+	FIELD z dispenser Lnone/aih;
 	METHOD a getRegisteredBlock (Ljava/lang/String;)Lnone/aih;
 		ARG 0 name
 CLASS none/ail net/minecraft/block/BlockBrewingStand
